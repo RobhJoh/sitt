@@ -1,25 +1,38 @@
 <template>
-  <Modal class="characters" @close="toggleModal('reference')" v-if="modals.reference && roles.size">
-    <font-awesome-icon @click="toggleModal('nightOrder')" icon="cloud-moon" class="toggle" title="Show Night Order" />
+  <Modal
+    class="characters"
+    @close="toggleModal('reference')"
+    v-if="modals.reference && roles.size"
+  >
+    <font-awesome-icon
+      @click="toggleModal('nightOrder')"
+      icon="cloud-moon"
+      class="toggle"
+      title="Show Night Order"
+    />
     <h3>
       Karaktärsreferens
       <font-awesome-icon icon="address-card" />
-      {{ edition.name || 'Custom Script' }}
+      {{ edition.name || "Custom Script" }}
     </h3>
-    <div v-for="(teamRoles, team) in rolesGrouped" :key="team" :class="['team', team]">
+    <div
+      v-for="(teamRoles, team) in rolesGrouped"
+      :key="team"
+      :class="['team', team]"
+    >
       <aside>
         <!-- <h4>changeTeamNames</h4> -->
         <h4>
           {{
-            team === 'townsfolk'
-              ? 'Hovfolk'
-              : team === 'outsider'
-              ? 'Hushållet'
-              : team === 'minion'
-              ? 'Hantlangare'
-              : team === 'demon'
-              ? 'Troninkräktare'
-              : ''
+            team === "townsfolk"
+              ? "Hovfolk"
+              : team === "outsider"
+              ? "Hushållet"
+              : team === "minion"
+              ? "Hantlangare"
+              : team === "demon"
+              ? "Troninkräktare"
+              : ""
           }}
         </h4>
       </aside>
@@ -32,13 +45,15 @@
               backgroundImage: `url(${
                 role.image && grimoire.isImageOptIn
                   ? role.image
-                  : require('../../assets/icons/' + (role.imageAlt || role.id) + '.svg')
-              })`,
+                  : require('../../assets/icons/' +
+                      (role.imageAlt || role.id) +
+                      '.svg')
+              })`
             }"
           ></span>
           <div class="role">
             <span class="player" v-if="Object.keys(playersByRole).length">{{
-              playersByRole[role.id] ? playersByRole[role.id].join(', ') : ''
+              playersByRole[role.id] ? playersByRole[role.id].join(", ") : ""
             }}</span>
             <span class="name">{{ role.name }}</span>
             <span class="ability">{{ role.ability }}</span>
@@ -58,17 +73,23 @@
           <span
             class="icon"
             :style="{
-              backgroundImage: `url(${require('../../assets/icons/' + jinx.first.id + '.png')})`,
+              backgroundImage: `url(${require('../../assets/icons/' +
+                jinx.first.id +
+                '.png')})`
             }"
           ></span>
           <span
             class="icon"
             :style="{
-              backgroundImage: `url(${require('../../assets/icons/' + jinx.second.id + '.png')})`,
+              backgroundImage: `url(${require('../../assets/icons/' +
+                jinx.second.id +
+                '.png')})`
             }"
           ></span>
           <div class="role">
-            <span class="name">{{ jinx.first.name }} & {{ jinx.second.name }}</span>
+            <span class="name"
+              >{{ jinx.first.name }} & {{ jinx.second.name }}</span
+            >
             <span class="ability">{{ jinx.reason }}</span>
           </div>
         </li>
@@ -80,12 +101,12 @@
 </template>
 
 <script>
-import Modal from './Modal'
-import { mapMutations, mapState } from 'vuex'
+import Modal from "./Modal";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
-    Modal,
+    Modal
   },
   computed: {
     /**
@@ -93,56 +114,56 @@ export default {
      * @returns {*[]} [{first, second, reason}]
      */
     jinxed: function() {
-      const jinxed = []
-      this.roles.forEach((role) => {
+      const jinxed = [];
+      this.roles.forEach(role => {
         if (this.jinxes.get(role.id)) {
           this.jinxes.get(role.id).forEach((reason, second) => {
             if (this.roles.get(second)) {
               jinxed.push({
                 first: role,
                 second: this.roles.get(second),
-                reason,
-              })
+                reason
+              });
             }
-          })
+          });
         }
-      })
-      return jinxed
+      });
+      return jinxed;
     },
     rolesGrouped: function() {
-      const rolesGrouped = {}
-      this.roles.forEach((role) => {
+      const rolesGrouped = {};
+      this.roles.forEach(role => {
         if (!rolesGrouped[role.team]) {
-          rolesGrouped[role.team] = []
+          rolesGrouped[role.team] = [];
         }
-        rolesGrouped[role.team].push(role)
-      })
-      delete rolesGrouped['traveler']
-      return rolesGrouped
+        rolesGrouped[role.team].push(role);
+      });
+      delete rolesGrouped["traveler"];
+      return rolesGrouped;
     },
     playersByRole: function() {
-      const players = {}
+      const players = {};
       this.players.forEach(({ name, role }) => {
-        if (role && role.id && role.team !== 'traveler') {
+        if (role && role.id && role.team !== "traveler") {
           if (!players[role.id]) {
-            players[role.id] = []
+            players[role.id] = [];
           }
-          players[role.id].push(name)
+          players[role.id].push(name);
         }
-      })
-      return players
+      });
+      return players;
     },
-    ...mapState(['roles', 'modals', 'edition', 'grimoire', 'jinxes']),
-    ...mapState('players', ['players']),
+    ...mapState(["roles", "modals", "edition", "grimoire", "jinxes"]),
+    ...mapState("players", ["players"])
   },
   methods: {
-    ...mapMutations(['toggleModal']),
-  },
-}
+    ...mapMutations(["toggleModal"])
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../../vars.scss';
+@import "../../vars.scss";
 
 .toggle {
   position: absolute;
@@ -208,7 +229,7 @@ h3 {
   align-items: stretch;
   width: 100%;
   &:not(:last-child):after {
-    content: ' ';
+    content: " ";
     display: block;
     width: 25%;
     height: 1px;
@@ -265,7 +286,7 @@ ul {
       background-repeat: no-repeat;
       margin: 5px;
       &:after {
-        content: ' ';
+        content: " ";
         display: block;
         padding-top: 75%;
       }

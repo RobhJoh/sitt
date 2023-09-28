@@ -1,5 +1,9 @@
 <template>
-  <Modal class="roles" v-if="modals.roles && nonTravelers >= 5" @close="toggleModal('roles')">
+  <Modal
+    class="roles"
+    v-if="modals.roles && nonTravelers >= 5"
+    @close="toggleModal('roles')"
+  >
     <h3>Välj karaktär för {{ nonTravelers }} spelaren:</h3>
     <ul class="tokens" v-for="(teamRoles, team) in roleSelection" :key="team">
       <li class="count" :class="[team]">
@@ -15,8 +19,11 @@
         <Token :role="role" />
         <font-awesome-icon icon="exclamation-triangle" v-if="role.setup" />
         <div class="buttons" v-if="allowMultiple">
-          <font-awesome-icon icon="minus-circle" @click.stop="role.selected--" />
-          <span>{{ role.selected > 1 ? 'x' + role.selected : '' }}</span>
+          <font-awesome-icon
+            icon="minus-circle"
+            @click.stop="role.selected--"
+          />
+          <span>{{ role.selected > 1 ? "x" + role.selected : "" }}</span>
           <font-awesome-icon icon="plus-circle" @click.stop="role.selected++" />
         </div>
       </li>
@@ -24,8 +31,8 @@
     <div class="warning" v-if="hasSelectedSetupRoles">
       <font-awesome-icon icon="exclamation-triangle" />
       <span>
-        Varning: det finns utvalda karaktärer som ändrar speluppsättningen! Slumpgeneratorn tar inte hänsyn till dessa
-        markörer.
+        Varning: det finns utvalda karaktärer som ändrar speluppsättningen!
+        Slumpgeneratorn tar inte hänsyn till dessa markörer.
       </span>
     </div>
     <label class="multiple" :class="{ checked: allowMultiple }">
@@ -38,7 +45,7 @@
         class="button"
         @click="assignRoles"
         :class="{
-          disabled: selectedRoles > nonTravelers || !selectedRoles,
+          disabled: selectedRoles > nonTravelers || !selectedRoles
         }"
       >
         <font-awesome-icon icon="people-arrows" />
@@ -53,106 +60,110 @@
 </template>
 
 <script>
-import Modal from './Modal'
-import gameJSON from './../../game'
-import Token from './../Token'
-import { mapGetters, mapMutations, mapState } from 'vuex'
+import Modal from "./Modal";
+import gameJSON from "./../../game";
+import Token from "./../Token";
+import { mapGetters, mapMutations, mapState } from "vuex";
 
-const randomElement = (arr) => arr[Math.floor(Math.random() * arr.length)]
+const randomElement = arr => arr[Math.floor(Math.random() * arr.length)];
 
 export default {
   components: {
     Token,
-    Modal,
+    Modal
   },
   data: function() {
     return {
       roleSelection: {},
       game: gameJSON,
-      allowMultiple: false,
-    }
+      allowMultiple: false
+    };
   },
   computed: {
     selectedRoles: function() {
       return Object.values(this.roleSelection)
-        .map((roles) => roles.reduce((a, { selected }) => a + selected, 0))
-        .reduce((a, b) => a + b, 0)
+        .map(roles => roles.reduce((a, { selected }) => a + selected, 0))
+        .reduce((a, b) => a + b, 0);
     },
     hasSelectedSetupRoles: function() {
-      return Object.values(this.roleSelection).some((roles) => roles.some((role) => role.selected && role.setup))
+      return Object.values(this.roleSelection).some(roles =>
+        roles.some(role => role.selected && role.setup)
+      );
     },
-    ...mapState(['roles', 'modals']),
-    ...mapState('players', ['players']),
-    ...mapGetters({ nonTravelers: 'players/nonTravelers' }),
+    ...mapState(["roles", "modals"]),
+    ...mapState("players", ["players"]),
+    ...mapGetters({ nonTravelers: "players/nonTravelers" })
   },
   methods: {
     selectRandomRoles() {
-      this.roleSelection = {}
-      this.roles.forEach((role) => {
+      this.roleSelection = {};
+      this.roles.forEach(role => {
         if (!this.roleSelection[role.team]) {
-          this.$set(this.roleSelection, role.team, [])
+          this.$set(this.roleSelection, role.team, []);
         }
-        this.roleSelection[role.team].push(role)
-        this.$set(role, 'selected', 0)
-      })
-      delete this.roleSelection['traveler']
-      const playerCount = Math.max(5, this.nonTravelers)
-      const composition = this.game[playerCount - 5]
-      Object.keys(composition).forEach((team) => {
+        this.roleSelection[role.team].push(role);
+        this.$set(role, "selected", 0);
+      });
+      delete this.roleSelection["traveler"];
+      const playerCount = Math.max(5, this.nonTravelers);
+      const composition = this.game[playerCount - 5];
+      Object.keys(composition).forEach(team => {
         for (let x = 0; x < composition[team]; x++) {
           if (this.roleSelection[team]) {
-            const available = this.roleSelection[team].filter((role) => !role.selected)
+            const available = this.roleSelection[team].filter(
+              role => !role.selected
+            );
             if (available.length) {
-              randomElement(available).selected = 1
+              randomElement(available).selected = 1;
             }
           }
         }
-      })
+      });
     },
     assignRoles() {
       if (this.selectedRoles <= this.nonTravelers && this.selectedRoles) {
         // generate list of selected roles and randomize it
         const roles = Object.values(this.roleSelection)
-          .map((roles) =>
+          .map(roles =>
             roles
               // duplicate roles selected more than once and filter unselected
               .reduce((a, r) => [...a, ...Array(r.selected).fill(r)], [])
           )
           // flatten into a single array
           .reduce((a, b) => [...a, ...b], [])
-          .map((a) => [Math.random(), a])
+          .map(a => [Math.random(), a])
           .sort((a, b) => a[0] - b[0])
-          .map((a) => a[1])
-        this.players.forEach((player) => {
-          if (player.role.team !== 'traveler' && roles.length) {
-            const value = roles.pop()
-            this.$store.commit('players/update', {
+          .map(a => a[1]);
+        this.players.forEach(player => {
+          if (player.role.team !== "traveler" && roles.length) {
+            const value = roles.pop();
+            this.$store.commit("players/update", {
               player,
-              property: 'role',
-              value,
-            })
+              property: "role",
+              value
+            });
           }
-        })
-        this.$store.commit('toggleModal', 'roles')
+        });
+        this.$store.commit("toggleModal", "roles");
       }
     },
-    ...mapMutations(['toggleModal']),
+    ...mapMutations(["toggleModal"])
   },
   mounted: function() {
     if (!Object.keys(this.roleSelection).length) {
-      this.selectRandomRoles()
+      this.selectRandomRoles();
     }
   },
   watch: {
     roles() {
-      this.selectRandomRoles()
-    },
-  },
-}
+      this.selectRandomRoles();
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../../vars.scss';
+@import "../../vars.scss";
 
 ul.tokens {
   padding-left: 5%;
@@ -232,7 +243,7 @@ ul.tokens {
     align-items: center;
     justify-content: center;
     &:after {
-      content: ' ';
+      content: " ";
       display: block;
       padding-top: 100%;
     }

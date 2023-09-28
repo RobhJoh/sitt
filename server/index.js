@@ -24,9 +24,7 @@ const wss = new WebSocket.Server({
   ...(process.env.NODE_ENV === 'development' ? { port: 8081 } : { server }),
   verifyClient: (info) =>
     info.origin &&
-    !!info.origin.match(
-      /^https?:\/\/([^.]+\.github\.io|localhost|clocktower\.online|exploding-art\.se|eddbra1nprivatetownsquare\.xyz)/i
-    ),
+    !!info.origin.match(/^https?:\/\/([^.]+\.github\.io|localhost|clocktower\.online|eddbra1nprivatetownsquare\.xyz)/i),
 })
 
 function noop() {}

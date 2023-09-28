@@ -1,5 +1,8 @@
 <template>
-  <Modal v-if="modals.reminder && availableReminders.length && players[playerIndex]" @close="toggleModal('reminder')">
+  <Modal
+    v-if="modals.reminder && availableReminders.length && players[playerIndex]"
+    @close="toggleModal('reminder')"
+  >
     <h3>Välj en påminnelsemarkör:</h3>
     <ul class="reminders">
       <li
@@ -15,8 +18,10 @@
             backgroundImage: `url(${
               reminder.image && grimoire.isImageOptIn
                 ? reminder.image
-                : require('../../assets/icons/' + (reminder.imageAlt || reminder.role) + '.svg')
-            })`,
+                : require('../../assets/icons/' +
+                    (reminder.imageAlt || reminder.role) +
+                    '.svg')
+            })`
           }"
         ></span>
         <span class="text">{{ reminder.name }}</span>
@@ -26,88 +31,91 @@
 </template>
 
 <script>
-import Modal from './Modal'
-import { mapMutations, mapState } from 'vuex'
+import Modal from "./Modal";
+import { mapMutations, mapState } from "vuex";
 
 /**
  * Helper function that maps a reminder name with a role-based object that provides necessary visual data.
  * @param role The role for which the reminder should be generated
  * @return {function(*): {image: string|string[]|string|*, role: *, name: *, imageAlt: string|*}}
  */
-const mapReminder = ({ id, image, imageAlt }) => (name) => ({
+const mapReminder = ({ id, image, imageAlt }) => name => ({
   role: id,
   image,
   imageAlt,
-  name,
-})
+  name
+});
 
 export default {
   components: { Modal },
-  props: ['playerIndex'],
+  props: ["playerIndex"],
   computed: {
     availableReminders() {
-      let reminders = []
-      const { players, bluffs } = this.$store.state.players
-      this.$store.state.roles.forEach((role) => {
+      let reminders = [];
+      const { players, bluffs } = this.$store.state.players;
+      this.$store.state.roles.forEach(role => {
         // add reminders from player roles
-        if (players.some((p) => p.role.id === role.id)) {
-          reminders = [...reminders, ...role.reminders.map(mapReminder(role))]
+        if (players.some(p => p.role.id === role.id)) {
+          reminders = [...reminders, ...role.reminders.map(mapReminder(role))];
         }
         // add reminders from bluff/other roles
-        else if (bluffs.some((bluff) => bluff.id === role.id)) {
-          reminders = [...reminders, ...role.reminders.map(mapReminder(role))]
+        else if (bluffs.some(bluff => bluff.id === role.id)) {
+          reminders = [...reminders, ...role.reminders.map(mapReminder(role))];
         }
         // add global reminders
         if (role.remindersGlobal && role.remindersGlobal.length) {
-          reminders = [...reminders, ...role.remindersGlobal.map(mapReminder(role))]
+          reminders = [
+            ...reminders,
+            ...role.remindersGlobal.map(mapReminder(role))
+          ];
         }
-      })
+      });
       // add fabled reminders
-      this.$store.state.players.fabled.forEach((role) => {
-        reminders = [...reminders, ...role.reminders.map(mapReminder(role))]
-      })
+      this.$store.state.players.fabled.forEach(role => {
+        reminders = [...reminders, ...role.reminders.map(mapReminder(role))];
+      });
 
       // add out of script traveler reminders
-      this.$store.state.otherTravelers.forEach((role) => {
-        if (players.some((p) => p.role.id === role.id)) {
-          reminders = [...reminders, ...role.reminders.map(mapReminder(role))]
+      this.$store.state.otherTravelers.forEach(role => {
+        if (players.some(p => p.role.id === role.id)) {
+          reminders = [...reminders, ...role.reminders.map(mapReminder(role))];
         }
-      })
+      });
 
-      reminders.push({ role: 'good', name: 'Lojal' })
-      reminders.push({ role: 'evil', name: 'Inkräktare' })
-      reminders.push({ role: 'custom', name: 'Egen anteckning' })
-      return reminders
+      reminders.push({ role: "good", name: "Lojal" });
+      reminders.push({ role: "evil", name: "Inkräktare" });
+      reminders.push({ role: "custom", name: "Egen anteckning" });
+      return reminders;
     },
-    ...mapState(['modals', 'grimoire']),
-    ...mapState('players', ['players']),
+    ...mapState(["modals", "grimoire"]),
+    ...mapState("players", ["players"])
   },
   methods: {
     addReminder(reminder) {
-      const player = this.$store.state.players.players[this.playerIndex]
-      let value
-      if (reminder.role === 'custom') {
-        const name = prompt('Lägg till en egen påminnelse')
-        if (!name) return
-        value = [...player.reminders, { role: 'custom', name }]
+      const player = this.$store.state.players.players[this.playerIndex];
+      let value;
+      if (reminder.role === "custom") {
+        const name = prompt("Lägg till en egen påminnelse");
+        if (!name) return;
+        value = [...player.reminders, { role: "custom", name }];
       } else {
-        value = [...player.reminders, reminder]
+        value = [...player.reminders, reminder];
       }
-      this.$store.commit('players/update', {
+      this.$store.commit("players/update", {
         player,
-        property: 'reminders',
-        value,
-      })
-      this.$store.commit('toggleModal', 'reminder')
+        property: "reminders",
+        value
+      });
+      this.$store.commit("toggleModal", "reminder");
     },
-    ...mapMutations(['toggleModal']),
-  },
-}
+    ...mapMutations(["toggleModal"])
+  }
+};
 </script>
 
 <style scoped lang="scss">
 ul.reminders .reminder {
-  background: url('../../assets/reminder.png') center center;
+  background: url("../../assets/reminder.png") center center;
   background-size: 150%;
   width: 14vh;
   height: 14vh;

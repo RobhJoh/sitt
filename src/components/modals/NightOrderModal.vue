@@ -1,5 +1,9 @@
 <template>
-  <Modal class="night-reference" @close="toggleModal('nightOrder')" v-if="modals.nightOrder && roles.size">
+  <Modal
+    class="night-reference"
+    @close="toggleModal('nightOrder')"
+    v-if="modals.nightOrder && roles.size"
+  >
     <font-awesome-icon
       @click="toggleModal('reference')"
       icon="address-card"
@@ -9,19 +13,28 @@
     <h3>
       Nattordning
       <font-awesome-icon icon="cloud-moon" />
-      {{ edition.name || 'Custom Script' }}
+      {{ edition.name || "Custom Script" }}
     </h3>
     <div class="night">
       <ul class="first">
         <li class="headline">Första Natten</li>
-        <li v-for="role in rolesFirstNight" :key="role.name" :class="[role.team]">
+        <li
+          v-for="role in rolesFirstNight"
+          :key="role.name"
+          :class="[role.team]"
+        >
           <span class="name">
             {{ role.name }}
             <span class="player" v-if="role.players.length">
               <br />
-              <small v-for="(player, index) in role.players" :class="{ dead: player.isDead }" :key="index">{{
-                player.name + (role.players.length > index + 1 ? ',' : '')
-              }}</small>
+              <small
+                v-for="(player, index) in role.players"
+                :class="{ dead: player.isDead }"
+                :key="index"
+                >{{
+                  player.name + (role.players.length > index + 1 ? "," : "")
+                }}</small
+              >
             </span>
           </span>
           <span
@@ -31,8 +44,10 @@
               backgroundImage: `url(${
                 role.image && grimoire.isImageOptIn
                   ? role.image
-                  : require('../../assets/icons/' + (role.imageAlt || role.id) + '.svg')
-              })`,
+                  : require('../../assets/icons/' +
+                      (role.imageAlt || role.id) +
+                      '.svg')
+              })`
             }"
           ></span>
           <span class="reminder" v-if="role.firstNightReminder">
@@ -42,7 +57,11 @@
       </ul>
       <ul class="other">
         <li class="headline">Övriga Nätter</li>
-        <li v-for="role in rolesOtherNight" :key="role.name" :class="[role.team]">
+        <li
+          v-for="role in rolesOtherNight"
+          :key="role.name"
+          :class="[role.team]"
+        >
           <span
             class="icon"
             v-if="role.id"
@@ -50,17 +69,24 @@
               backgroundImage: `url(${
                 role.image && grimoire.isImageOptIn
                   ? role.image
-                  : require('../../assets/icons/' + (role.imageAlt || role.id) + '.svg')
-              })`,
+                  : require('../../assets/icons/' +
+                      (role.imageAlt || role.id) +
+                      '.svg')
+              })`
             }"
           ></span>
           <span class="name">
             {{ role.name }}
             <span class="player" v-if="role.players.length">
               <br />
-              <small v-for="(player, index) in role.players" :class="{ dead: player.isDead }" :key="index">{{
-                player.name + (role.players.length > index + 1 ? ',' : '')
-              }}</small>
+              <small
+                v-for="(player, index) in role.players"
+                :class="{ dead: player.isDead }"
+                :key="index"
+                >{{
+                  player.name + (role.players.length > index + 1 ? "," : "")
+                }}</small
+              >
             </span>
           </span>
           <span class="reminder" v-if="role.otherNightReminder">
@@ -73,83 +99,83 @@
 </template>
 
 <script>
-import Modal from './Modal'
-import { mapMutations, mapState } from 'vuex'
+import Modal from "./Modal";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
-    Modal,
+    Modal
   },
   computed: {
     rolesFirstNight: function() {
-      const rolesFirstNight = []
+      const rolesFirstNight = [];
       // add minion / demon infos to night order sheet
       if (this.players.length > 6) {
         rolesFirstNight.push(
           {
-            id: 'evil',
-            name: 'Hantlangar info',
+            id: "evil",
+            name: "Hantlangar info",
             firstNight: 5,
-            team: 'minion',
-            players: this.players.filter((p) => p.role.team === 'minion'),
+            team: "minion",
+            players: this.players.filter(p => p.role.team === "minion"),
             firstNightReminder:
-              '• Om mer än en Hantlangare, se att alla får ögonkontakt med varandra.' +
-              '• Visa kortet "Detta är Troninkräktaren". Peka på Troninkräktaren.',
+              "• Om mer än en Hantlangare, se att alla får ögonkontakt med varandra." +
+              '• Visa kortet "Detta är Troninkräktaren". Peka på Troninkräktaren.'
           },
           {
-            id: 'evil',
-            name: 'Troninkräktarens info & bluffar',
+            id: "evil",
+            name: "Troninkräktarens info & bluffar",
             firstNight: 8,
-            team: 'demon',
-            players: this.players.filter((p) => p.role.team === 'demon'),
+            team: "demon",
+            players: this.players.filter(p => p.role.team === "demon"),
             firstNightReminder:
               '• Visa kortet "Dessa är dina Hantlangare". Peka på varje Hantlangare.' +
-              '• Visa kortet “Dessa karaktärer är inte i spel”. Visa 3 karaktärmarkörer av lojala ' +
-              'karaktärer inte i spel.',
+              "• Visa kortet “Dessa karaktärer är inte i spel”. Visa 3 karaktärmarkörer av lojala " +
+              "karaktärer inte i spel."
           }
-        )
+        );
       }
-      this.roles.forEach((role) => {
-        const players = this.players.filter((p) => p.role.id === role.id)
-        if (role.firstNight && (role.team !== 'traveler' || players.length)) {
-          rolesFirstNight.push(Object.assign({ players }, role))
+      this.roles.forEach(role => {
+        const players = this.players.filter(p => p.role.id === role.id);
+        if (role.firstNight && (role.team !== "traveler" || players.length)) {
+          rolesFirstNight.push(Object.assign({ players }, role));
         }
-      })
+      });
       this.fabled
         .filter(({ firstNight }) => firstNight)
-        .forEach((fabled) => {
-          rolesFirstNight.push(Object.assign({ players: [] }, fabled))
-        })
-      rolesFirstNight.sort((a, b) => a.firstNight - b.firstNight)
-      return rolesFirstNight
+        .forEach(fabled => {
+          rolesFirstNight.push(Object.assign({ players: [] }, fabled));
+        });
+      rolesFirstNight.sort((a, b) => a.firstNight - b.firstNight);
+      return rolesFirstNight;
     },
     rolesOtherNight: function() {
-      const rolesOtherNight = []
-      this.roles.forEach((role) => {
-        const players = this.players.filter((p) => p.role.id === role.id)
-        if (role.otherNight && (role.team !== 'traveler' || players.length)) {
-          rolesOtherNight.push(Object.assign({ players }, role))
+      const rolesOtherNight = [];
+      this.roles.forEach(role => {
+        const players = this.players.filter(p => p.role.id === role.id);
+        if (role.otherNight && (role.team !== "traveler" || players.length)) {
+          rolesOtherNight.push(Object.assign({ players }, role));
         }
-      })
+      });
       this.fabled
         .filter(({ otherNight }) => otherNight)
-        .forEach((fabled) => {
-          rolesOtherNight.push(Object.assign({ players: [] }, fabled))
-        })
-      rolesOtherNight.sort((a, b) => a.otherNight - b.otherNight)
-      return rolesOtherNight
+        .forEach(fabled => {
+          rolesOtherNight.push(Object.assign({ players: [] }, fabled));
+        });
+      rolesOtherNight.sort((a, b) => a.otherNight - b.otherNight);
+      return rolesOtherNight;
     },
-    ...mapState(['roles', 'modals', 'edition', 'grimoire']),
-    ...mapState('players', ['players', 'fabled']),
+    ...mapState(["roles", "modals", "edition", "grimoire"]),
+    ...mapState("players", ["players", "fabled"])
   },
   methods: {
-    ...mapMutations(['toggleModal']),
-  },
-}
+    ...mapMutations(["toggleModal"])
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../../vars.scss';
+@import "../../vars.scss";
 
 .toggle {
   position: absolute;
@@ -175,7 +201,7 @@ h4 {
   height: 20px;
   &:before,
   &:after {
-    content: ' ';
+    content: " ";
     width: 100%;
     height: 1px;
     border-radius: 2px;
@@ -242,7 +268,7 @@ ul {
       text-align: center;
       margin: 0 2px;
       &:after {
-        content: ' ';
+        content: " ";
         display: block;
         padding-top: 66%;
       }

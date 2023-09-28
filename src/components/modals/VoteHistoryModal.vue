@@ -17,7 +17,12 @@
     <template v-if="!session.isSpectator">
       <div class="options">
         <div class="option" @click="setRecordVoteHistory">
-          <font-awesome-icon :icon="['fas', session.isVoteHistoryAllowed ? 'check-square' : 'square']" />
+          <font-awesome-icon
+            :icon="[
+              'fas',
+              session.isVoteHistoryAllowed ? 'check-square' : 'square'
+            ]"
+          />
           Tillgänglig för spelarna
         </div>
         <div class="option" @click="clearVoteHistory">
@@ -48,12 +53,12 @@
               vote.timestamp
                 .getHours()
                 .toString()
-                .padStart(2, '0')
+                .padStart(2, "0")
             }}:{{
               vote.timestamp
                 .getMinutes()
                 .toString()
-                .padStart(2, '0')
+                .padStart(2, "0")
             }}
           </td>
           <td>{{ vote.nominator }}</td>
@@ -65,10 +70,15 @@
           </td>
           <td>
             {{ vote.majority }}
-            <font-awesome-icon :icon="['fas', vote.votes.length >= vote.majority ? 'check-square' : 'square']" />
+            <font-awesome-icon
+              :icon="[
+                'fas',
+                vote.votes.length >= vote.majority ? 'check-square' : 'square'
+              ]"
+            />
           </td>
           <td>
-            {{ vote.votes.join(', ') }}
+            {{ vote.votes.join(", ") }}
           </td>
         </tr>
       </tbody>
@@ -77,30 +87,33 @@
 </template>
 
 <script>
-import Modal from './Modal'
-import { mapMutations, mapState } from 'vuex'
+import Modal from "./Modal";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
-    Modal,
+    Modal
   },
   computed: {
-    ...mapState(['session', 'modals']),
+    ...mapState(["session", "modals"])
   },
   methods: {
     clearVoteHistory() {
-      this.$store.commit('session/clearVoteHistory')
+      this.$store.commit("session/clearVoteHistory");
     },
     setRecordVoteHistory() {
-      this.$store.commit('session/setVoteHistoryAllowed', !this.session.isVoteHistoryAllowed)
+      this.$store.commit(
+        "session/setVoteHistoryAllowed",
+        !this.session.isVoteHistoryAllowed
+      );
     },
-    ...mapMutations(['toggleModal']),
-  },
-}
+    ...mapMutations(["toggleModal"])
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../../vars.scss';
+@import "../../vars.scss";
 
 .clear {
   position: absolute;

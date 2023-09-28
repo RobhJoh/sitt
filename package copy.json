@@ -5,8 +5,7 @@
   "author": "Roberth Johansson",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "deploy": "sh deploy.sh",
+    "build": "vue-cli-service build ./src/main.js",
     "lint": "vue-cli-service lint",
     "lint-ci": "vue-cli-service lint --no-fix --max-warnings=0"
   },
@@ -33,11 +32,6 @@
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^1.19.1"
   },
-  "keywords": [
-    "sitt",
-    "throneroom",
-    "vue",
-    "scss"
-  ],
+  "keywords": ["sitt", "throneroom", "vue", "scss"],
   "license": "GPL-3.0"
 }

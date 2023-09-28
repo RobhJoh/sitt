@@ -15,7 +15,11 @@
             class="top-right-button"
             :icon="['fas', isMaximized ? 'window-minimize' : 'window-maximize']"
           />
-          <font-awesome-icon @click="close" class="top-right-button" icon="times-circle" />
+          <font-awesome-icon
+            @click="close"
+            class="top-right-button"
+            icon="times-circle"
+          />
         </div>
         <div class="slot">
           <slot></slot>
@@ -29,15 +33,15 @@
 export default {
   data: function() {
     return {
-      isMaximized: false,
-    }
+      isMaximized: false
+    };
   },
   methods: {
     close() {
-      this.$emit('close')
-    },
-  },
-}
+      this.$emit("close");
+    }
+  }
+};
 </script>
 
 <style lang="scss">

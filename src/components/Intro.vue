@@ -3,18 +3,27 @@
     <img src="../assets/sitt-logo.svg" alt="" class="logo" />
     <div>
       Välkommen till den virtuella
-      <b>Tronsalen och de Kungliga Hemligheternas Bok</b> för Struggle in the Tower! Lägg till fler spelare genom
-      <span class="button" @click="toggleMenu"> <font-awesome-icon icon="cog" /> Meny </span>
-      uppe till höger eller genom att trycka <b>[A]</b>. Du kan också gå med i en spelsession genom att trycka på
-      <b>[J]</b>.<br />
+      <b>Tronsalen och de Kungliga Hemligheternas Bok</b> för Struggle in the
+      Tower! Lägg till fler spelare genom
+      <span class="button" @click="toggleMenu">
+        <font-awesome-icon icon="cog" /> Meny
+      </span>
+      uppe till höger eller genom att trycka <b>[A]</b>. Du kan också gå med i
+      en spelsession genom att trycka på <b>[J]</b>.<br />
       <div class="footer">
-        Det här projektet är gratis och med öppen källkod samt en ny version med nytt tema av spelet Blood on the Clocktower.
-        Huvudrepo finns på
-        <a href="https://github.com/bra1n/townsquare" target="_blank">GitHub</a>. Det är inte kopplat till Pandemonium
-        Institute. "Blood on the Clocktower" är ett varumärke för Steven Medway och The Pandemonium Institute.
+        Det här projektet är gratis och med öppen källkod samt en ny version med
+        nytt tema av spelet Blood on the Clocktower. Huvudrepo finns på
+        <a href="https://github.com/bra1n/townsquare" target="_blank">GitHub</a
+        >. Det är inte kopplat till Pandemonium Institute. "Blood on the
+        Clocktower" är ett varumärke för Steven Medway och The Pandemonium
+        Institute.
       </div>
     </div>
-    <a class="redirect" v-if="language === 'zh-CN'" href="https://clocktower.gstonegames.com">
+    <a
+      class="redirect"
+      v-if="language === 'zh-CN'"
+      href="https://clocktower.gstonegames.com"
+    >
       <img src="../assets/gstone.png" class="gstone" alt="" />
       你想使用中文版魔典吗？
     </a>
@@ -22,16 +31,16 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
 
 export default {
   data() {
     return {
-      language: window.navigator.userLanguage || window.navigator.language,
-    }
+      language: window.navigator.userLanguage || window.navigator.language
+    };
   },
-  methods: mapMutations(['toggleMenu']),
-}
+  methods: mapMutations(["toggleMenu"])
+};
 </script>
 
 <style scoped lang="scss">

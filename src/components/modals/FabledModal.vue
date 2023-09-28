@@ -12,39 +12,41 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
-import Modal from './Modal'
-import Token from '../Token'
+import { mapMutations, mapState } from "vuex";
+import Modal from "./Modal";
+import Token from "../Token";
 
 export default {
   components: { Token, Modal },
   computed: {
-    ...mapState(['modals', 'fabled', 'grimoire']),
+    ...mapState(["modals", "fabled", "grimoire"]),
     fabled() {
-      const fabled = []
-      this.$store.state.fabled.forEach((role) => {
+      const fabled = [];
+      this.$store.state.fabled.forEach(role => {
         // don't show fabled that are already in play
-        if (!this.$store.state.players.fabled.some((fable) => fable.id === role.id)) {
-          fabled.push(role)
+        if (
+          !this.$store.state.players.fabled.some(fable => fable.id === role.id)
+        ) {
+          fabled.push(role);
         }
-      })
-      return fabled
-    },
+      });
+      return fabled;
+    }
   },
   methods: {
     setFabled(role) {
-      this.$store.commit('players/setFabled', {
-        fabled: role,
-      })
-      this.$store.commit('toggleModal', 'fabled')
+      this.$store.commit("players/setFabled", {
+        fabled: role
+      });
+      this.$store.commit("toggleModal", "fabled");
     },
-    ...mapMutations(['toggleModal']),
-  },
-}
+    ...mapMutations(["toggleModal"])
+  }
+};
 </script>
 
 <style scoped lang="scss">
-@import '../../vars.scss';
+@import "../../vars.scss";
 
 ul.tokens li {
   border-radius: 50%;
