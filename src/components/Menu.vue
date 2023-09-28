@@ -1,19 +1,11 @@
 <template>
   <div id="controls">
-    <audio
-      id="fanfare"
-      src="../assets/sounds/trumpet-royal-fanfare.mp3"
-      preload="auto"
-    ></audio>
+    <audio id="fanfare" src="../assets/sounds/trumpet-royal-fanfare.mp3" preload="auto"></audio>
     <span
       class="nomlog-summary"
       v-show="session.voteHistory.length && session.sessionId"
       @click="toggleModal('voteHistory')"
-      :title="
-        `${session.voteHistory.length} recent ${
-          session.voteHistory.length == 1 ? 'nomination' : 'nominations'
-        }`
-      "
+      :title="`${session.voteHistory.length} recent ${session.voteHistory.length == 1 ? 'nomination' : 'nominations'}`"
     >
       <font-awesome-icon icon="book-dead" />
       {{ session.voteHistory.length }}
@@ -22,14 +14,12 @@
       class="session"
       :class="{
         spectator: session.isSpectator,
-        reconnecting: session.isReconnecting
+        reconnecting: session.isReconnecting,
       }"
       v-if="session.sessionId"
       @click="leaveSession"
       :title="
-        `${session.playerCount} andra spelare i denna session${
-          session.ping ? ' (' + session.ping + 'ms latency)' : ''
-        }`
+        `${session.playerCount} andra spelare i denna session${session.ping ? ' (' + session.ping + 'ms latency)' : ''}`
       "
     >
       <font-awesome-icon icon="broadcast-tower" />
@@ -41,11 +31,7 @@
         <li class="tabs" :class="tab">
           <font-awesome-icon icon="book-open" @click="tab = 'grimoire'" />
           <font-awesome-icon icon="broadcast-tower" @click="tab = 'session'" />
-          <font-awesome-icon
-            icon="users"
-            v-if="!session.isSpectator"
-            @click="tab = 'players'"
-          />
+          <font-awesome-icon icon="users" v-if="!session.isSpectator" @click="tab = 'players'" />
           <font-awesome-icon icon="theater-masks" @click="tab = 'characters'" />
           <font-awesome-icon icon="question" @click="tab = 'help'" />
         </li>
@@ -66,26 +52,15 @@
           <li @click="toggleNightOrder" v-if="players.length">
             Nattordning
             <em>
-              <font-awesome-icon
-                :icon="[
-                  'fas',
-                  grimoire.isNightOrder ? 'check-square' : 'square'
-                ]"
-              />
+              <font-awesome-icon :icon="['fas', grimoire.isNightOrder ? 'check-square' : 'square']" />
             </em>
           </li>
           <li v-if="players.length">
             Zoom
             <em>
-              <font-awesome-icon
-                @click="setZoom(grimoire.zoom - 1)"
-                icon="search-minus"
-              />
+              <font-awesome-icon @click="setZoom(grimoire.zoom - 1)" icon="search-minus" />
               {{ Math.round(100 + grimoire.zoom * 10) }}%
-              <font-awesome-icon
-                @click="setZoom(grimoire.zoom + 1)"
-                icon="search-plus"
-              />
+              <font-awesome-icon @click="setZoom(grimoire.zoom + 1)" icon="search-plus" />
             </em>
           </li>
           <li @click="setBackground">
@@ -94,34 +69,22 @@
           </li>
           <li v-if="!edition.isOfficial" @click="imageOptIn">
             <small>Visa egna bilder</small>
-            <em
-              ><font-awesome-icon
-                :icon="[
-                  'fas',
-                  grimoire.isImageOptIn ? 'check-square' : 'square'
-                ]"
-            /></em>
+            <em><font-awesome-icon :icon="['fas', grimoire.isImageOptIn ? 'check-square' : 'square']"/></em>
           </li>
           <li @click="toggleStatic">
             Inaktivera animationer
-            <em
-              ><font-awesome-icon
-                :icon="['fas', grimoire.isStatic ? 'check-square' : 'square']"
-            /></em>
+            <em><font-awesome-icon :icon="['fas', grimoire.isStatic ? 'check-square' : 'square']"/></em>
           </li>
           <li @click="toggleMuted">
             Stäng av ljud
-            <em
-              ><font-awesome-icon
-                :icon="['fas', grimoire.isMuted ? 'volume-mute' : 'volume-up']"
-            /></em>
+            <em><font-awesome-icon :icon="['fas', grimoire.isMuted ? 'volume-mute' : 'volume-up']"/></em>
           </li>
         </template>
 
         <template v-if="tab === 'session'">
           <!-- Session -->
           <li class="headline" v-if="session.sessionId">
-            {{ session.isSpectator ? "Spelande" : "Värdskap" }}
+            {{ session.isSpectator ? 'Spelande' : 'Värdskap' }}
           </li>
           <li class="headline" v-else>
             Live Session
@@ -136,7 +99,7 @@
               <em><font-awesome-icon icon="theater-masks"/></em>
             </li>
             <li v-if="session.ping">
-              Fördröj till {{ session.isSpectator ? "host" : "players" }}
+              Fördröj till {{ session.isSpectator ? 'värden' : 'spelarna' }}
               <em>{{ session.ping }}ms</em>
             </li>
             <li @click="copySessionUrl">
@@ -147,10 +110,7 @@
               Skicka karaktärer
               <em><font-awesome-icon icon="theater-masks"/></em>
             </li>
-            <li
-              v-if="session.voteHistory.length || !session.isSpectator"
-              @click="toggleModal('voteHistory')"
-            >
+            <li v-if="session.voteHistory.length || !session.isSpectator" @click="toggleModal('voteHistory')">
               Rösthistorik<em>[V]</em>
             </li>
             <li @click="leaveSession">
@@ -163,9 +123,7 @@
         <template v-if="tab === 'players' && !session.isSpectator">
           <!-- Users -->
           <li class="headline">Spelare</li>
-          <li @click="addPlayer" v-if="players.length < 20">
-            Lägg till<em>[A]</em>
-          </li>
+          <li @click="addPlayer" v-if="players.length < 20">Lägg till<em>[A]</em></li>
           <li @click="randomizeSeatings" v-if="players.length > 2">
             Slumpa platserna
             <em><font-awesome-icon icon="dice"/></em>
@@ -183,10 +141,7 @@
             Välj Utgåva
             <em>[E]</em>
           </li>
-          <li
-            @click="toggleModal('roles')"
-            v-if="!session.isSpectator && players.length > 4"
-          >
+          <li @click="toggleModal('roles')" v-if="!session.isSpectator && players.length > 4">
             Välj & Tilldela
             <em>[C]</em>
           </li>
@@ -243,146 +198,138 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(["grimoire", "session", "edition"]),
-    ...mapState("players", ["players"])
+    ...mapState(['grimoire', 'session', 'edition']),
+    ...mapState('players', ['players']),
   },
   data() {
     return {
-      tab: "grimoire"
-    };
+      tab: 'grimoire',
+    }
   },
   methods: {
     setBackground() {
-      const background = prompt("Enter custom background URL");
-      if (background || background === "") {
-        this.$store.commit("setBackground", background);
+      const background = prompt('Enter custom background URL')
+      if (background || background === '') {
+        this.$store.commit('setBackground', background)
       }
     },
     hostSession() {
-      if (this.session.sessionId) return;
-      const sessionId = prompt(
-        "Ange ett kanalnummer / namn för din session",
-        Math.round(Math.random() * 10000)
-      );
+      if (this.session.sessionId) return
+      const sessionId = prompt('Ange ett kanalnummer / namn för din session', Math.round(Math.random() * 10000))
       if (sessionId) {
-        this.$store.commit("session/clearVoteHistory");
-        this.$store.commit("session/setSpectator", false);
-        this.$store.commit("session/setSessionId", sessionId);
-        this.copySessionUrl();
+        this.$store.commit('session/clearVoteHistory')
+        this.$store.commit('session/setSpectator', false)
+        this.$store.commit('session/setSessionId', sessionId)
+        this.copySessionUrl()
       }
     },
     copySessionUrl() {
-      const url = window.location.href.split("#")[0];
-      const link = url + "#" + this.session.sessionId;
-      navigator.clipboard.writeText(link);
+      const url = window.location.href.split('#')[0]
+      const link = url + '#' + this.session.sessionId
+      navigator.clipboard.writeText(link)
     },
     distributeRoles() {
-      if (this.session.isSpectator) return;
-      const popup =
-        "Vill du dela ut tilldelade karaktärer till alla SITTADE spelare?";
+      if (this.session.isSpectator) return
+      const popup = 'Vill du dela ut tilldelade karaktärer till alla SITTADE spelare?'
       if (confirm(popup)) {
-        this.$store.commit("session/distributeRoles", true);
+        this.$store.commit('session/distributeRoles', true)
         setTimeout(
           (() => {
-            this.$store.commit("session/distributeRoles", false);
+            this.$store.commit('session/distributeRoles', false)
           }).bind(this),
           2000
-        );
+        )
       }
     },
     playFanfare() {
-      const audio = document.getElementById("fanfare");
-      if (confirm("Vill du spela upp Tronsals fanfaren?")) {
-        console.log("Play Fanfare");
-        audio.volume = 0.2;
-        audio.play();
+      const audio = document.getElementById('fanfare')
+      if (confirm('Vill du spela upp Tronsals fanfaren?')) {
+        console.log('Play Fanfare')
+        audio.volume = 0.2
+        audio.play()
       }
     },
     imageOptIn() {
       const popup =
-        "Är du säker på att du vill tillåta egna bilder? En författare av en skadlig skriptfil kan spåra din IP-adress på detta sätt.";
+        'Är du säker på att du vill tillåta egna bilder? En författare av en skadlig skriptfil kan spåra din IP-adress på detta sätt.'
       if (this.grimoire.isImageOptIn || confirm(popup)) {
-        this.toggleImageOptIn();
+        this.toggleImageOptIn()
       }
     },
     joinSession() {
-      if (this.session.sessionId) return this.leaveSession();
-      let sessionId = prompt(
-        "Ange kanalnumret / namnet på den session du vill gå med i"
-      );
+      if (this.session.sessionId) return this.leaveSession()
+      let sessionId = prompt('Ange kanalnumret / namnet på den session du vill gå med i')
       if (sessionId.match(/^https?:\/\//i)) {
-        sessionId = sessionId.split("#").pop();
+        sessionId = sessionId.split('#').pop()
       }
       if (sessionId) {
-        this.$store.commit("session/clearVoteHistory");
-        this.$store.commit("session/setSpectator", true);
-        this.$store.commit("toggleGrimoire", false);
-        this.$store.commit("session/setSessionId", sessionId);
+        this.$store.commit('session/clearVoteHistory')
+        this.$store.commit('session/setSpectator', true)
+        this.$store.commit('toggleGrimoire', false)
+        this.$store.commit('session/setSessionId', sessionId)
       }
     },
     leaveSession() {
-      if (
-        confirm("Är du säker på att du vill lämna den aktiva spelomgången?")
-      ) {
-        this.$store.commit("session/setSpectator", false);
-        this.$store.commit("session/setSessionId", "");
+      if (confirm('Är du säker på att du vill lämna den aktiva spelomgången?')) {
+        this.$store.commit('session/setSpectator', false)
+        this.$store.commit('session/setSessionId', '')
       }
     },
     addPlayer() {
-      if (this.session.isSpectator) return;
-      if (this.players.length >= 20) return;
-      const name = prompt("Spelarnamn");
+      if (this.session.isSpectator) return
+      if (this.players.length >= 20) return
+      const name = prompt('Spelarnamn')
       if (name) {
-        this.$store.commit("players/add", name);
+        this.$store.commit('players/add', name)
       }
     },
     randomizeSeatings() {
-      if (this.session.isSpectator) return;
-      if (confirm("Är du säker på att du vill slump ut platserna?")) {
-        this.$store.dispatch("players/randomize");
+      if (this.session.isSpectator) return
+      if (confirm('Är du säker på att du vill slump ut platserna?')) {
+        this.$store.dispatch('players/randomize')
       }
     },
     clearPlayers() {
-      if (this.session.isSpectator) return;
-      if (confirm("Är du säker på att du vill ta bort alla spelare?")) {
+      if (this.session.isSpectator) return
+      if (confirm('Är du säker på att du vill ta bort alla spelare?')) {
         // abort vote if in progress
         if (this.session.nomination) {
-          this.$store.commit("session/nomination");
+          this.$store.commit('session/nomination')
         }
-        this.$store.commit("players/clear");
+        this.$store.commit('players/clear')
       }
     },
     clearRoles() {
-      if (confirm("Är du säker på att du vill ta bort alla spelarroller?")) {
-        this.$store.dispatch("players/clearRoles");
+      if (confirm('Är du säker på att du vill ta bort alla spelarroller?')) {
+        this.$store.dispatch('players/clearRoles')
       }
     },
     toggleNight() {
-      this.$store.commit("toggleNight");
+      this.$store.commit('toggleNight')
       if (this.grimoire.isNight) {
-        this.$store.commit("session/setMarkedPlayer", -1);
+        this.$store.commit('session/setMarkedPlayer', -1)
       }
     },
     ...mapMutations([
-      "toggleGrimoire",
-      "toggleMenu",
-      "toggleImageOptIn",
-      "toggleMuted",
-      "toggleNightOrder",
-      "toggleStatic",
-      "setZoom",
-      "toggleModal"
-    ])
-  }
-};
+      'toggleGrimoire',
+      'toggleMenu',
+      'toggleImageOptIn',
+      'toggleMuted',
+      'toggleNightOrder',
+      'toggleStatic',
+      'setZoom',
+      'toggleModal',
+    ]),
+  },
+}
 </script>
 
 <style scoped lang="scss">
-@import "../vars.scss";
+@import '../vars.scss';
 
 // success animation
 @keyframes greenToWhite {
@@ -519,11 +466,7 @@ export default {
         &.characters .fa-theater-masks,
         &.session .fa-broadcast-tower,
         &.help .fa-question {
-          background: linear-gradient(
-            to bottom,
-            $townsfolk 0%,
-            rgba(0, 0, 0, 0.5) 100%
-          );
+          background: linear-gradient(to bottom, $townsfolk 0%, rgba(0, 0, 0, 0.5) 100%);
         }
       }
 
@@ -546,13 +489,7 @@ export default {
       padding: 0 10px;
       text-align: center;
       justify-content: center;
-      background: linear-gradient(
-        to right,
-        $townsfolk 0%,
-        rgba(0, 0, 0, 0.5) 20%,
-        rgba(0, 0, 0, 0.5) 80%,
-        $demon 100%
-      );
+      background: linear-gradient(to right, $townsfolk 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0.5) 80%, $demon 100%);
     }
   }
 }
