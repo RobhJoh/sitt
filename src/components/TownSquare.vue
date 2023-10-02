@@ -5,9 +5,14 @@
     :class="{
       public: grimoire.isPublic,
       spectator: session.isSpectator,
-      vote: session.nomination
+      vote: session.nomination,
     }"
   >
+    <transition name="blur">
+      <span id="fanfare-icon" v-if="session.isPlayFanfare">
+        <font-awesome-icon icon="crown" />
+      </span>
+    </transition>
     <ul class="circle" :class="['size-' + players.length]">
       <Player
         v-for="(player, index) in players"
@@ -18,17 +23,12 @@
           from: Math.max(swap, move, nominate) === index,
           swap: swap > -1,
           move: move > -1,
-          nominate: nominate > -1
+          nominate: nominate > -1,
         }"
       ></Player>
     </ul>
 
-    <div
-      class="bluffs"
-      v-if="players.length"
-      ref="bluffs"
-      :class="{ closed: !isBluffsOpen }"
-    >
+    <div class="bluffs" v-if="players.length" ref="bluffs" :class="{ closed: !isBluffsOpen }">
       <h3>
         <span v-if="session.isSpectator">Andra karaktärer</span>
         <span v-else>Troninkräktarens bluffar</span>
@@ -36,11 +36,7 @@
         <font-awesome-icon icon="plus-circle" @click.stop="toggleBluffs" />
       </h3>
       <ul>
-        <li
-          v-for="index in bluffSize"
-          :key="index"
-          @click="openRoleModal(index * -1)"
-        >
+        <li v-for="index in bluffSize" :key="index" @click="openRoleModal(index * -1)">
           <Token :role="bluffs[index - 1]"></Token>
         </li>
       </ul>
@@ -53,28 +49,14 @@
         <font-awesome-icon icon="plus-circle" @click.stop="toggleFabled" />
       </h3>
       <ul>
-        <li
-          v-for="(role, index) in fabled"
-          :key="index"
-          @click="removeFabled(index)"
-        >
-          <div
-            class="night-order first"
-            v-if="nightOrder.get(role).first && grimoire.isNightOrder"
-          >
+        <li v-for="(role, index) in fabled" :key="index" @click="removeFabled(index)">
+          <div class="night-order first" v-if="nightOrder.get(role).first && grimoire.isNightOrder">
             <em>{{ nightOrder.get(role).first }}.</em>
-            <span v-if="role.firstNightReminder">{{
-              role.firstNightReminder
-            }}</span>
+            <span v-if="role.firstNightReminder">{{ role.firstNightReminder }}</span>
           </div>
-          <div
-            class="night-order other"
-            v-if="nightOrder.get(role).other && grimoire.isNightOrder"
-          >
+          <div class="night-order other" v-if="nightOrder.get(role).other && grimoire.isNightOrder">
             <em>{{ nightOrder.get(role).other }}.</em>
-            <span v-if="role.otherNightReminder">{{
-              role.otherNightReminder
-            }}</span>
+            <span v-if="role.otherNightReminder">{{ role.otherNightReminder }}</span>
           </div>
           <Token :role="role"></Token>
         </li>
@@ -87,23 +69,23 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
-import Player from "./Player";
-import Token from "./Token";
-import ReminderModal from "./modals/ReminderModal";
-import RoleModal from "./modals/RoleModal";
+import { mapGetters, mapState } from 'vuex'
+import Player from './Player'
+import Token from './Token'
+import ReminderModal from './modals/ReminderModal'
+import RoleModal from './modals/RoleModal'
 
 export default {
   components: {
     Player,
     Token,
     RoleModal,
-    ReminderModal
+    ReminderModal,
   },
   computed: {
-    ...mapGetters({ nightOrder: "players/nightOrder" }),
-    ...mapState(["grimoire", "roles", "session"]),
-    ...mapState("players", ["players", "bluffs", "fabled"])
+    ...mapGetters({ nightOrder: 'players/nightOrder' }),
+    ...mapState(['grimoire', 'roles', 'session']),
+    ...mapState('players', ['players', 'bluffs', 'fabled']),
   },
   data() {
     return {
@@ -113,149 +95,131 @@ export default {
       move: -1,
       nominate: -1,
       isBluffsOpen: true,
-      isFabledOpen: true
-    };
+      isFabledOpen: true,
+    }
   },
   methods: {
     toggleBluffs() {
-      this.isBluffsOpen = !this.isBluffsOpen;
+      this.isBluffsOpen = !this.isBluffsOpen
     },
     toggleFabled() {
-      this.isFabledOpen = !this.isFabledOpen;
+      this.isFabledOpen = !this.isFabledOpen
     },
     removeFabled(index) {
-      if (this.session.isSpectator) return;
-      this.$store.commit("players/setFabled", { index });
+      if (this.session.isSpectator) return
+      this.$store.commit('players/setFabled', { index })
     },
     handleTrigger(playerIndex, [method, params]) {
-      if (typeof this[method] === "function") {
-        this[method](playerIndex, params);
+      if (typeof this[method] === 'function') {
+        this[method](playerIndex, params)
       }
     },
     claimSeat(playerIndex) {
-      if (!this.session.isSpectator) return;
+      if (!this.session.isSpectator) return
       if (this.session.playerId === this.players[playerIndex].id) {
-        this.$store.commit("session/claimSeat", -1);
+        this.$store.commit('session/claimSeat', -1)
       } else {
-        this.$store.commit("session/claimSeat", playerIndex);
+        this.$store.commit('session/claimSeat', playerIndex)
       }
     },
     openReminderModal(playerIndex) {
-      this.selectedPlayer = playerIndex;
-      this.$store.commit("toggleModal", "reminder");
+      this.selectedPlayer = playerIndex
+      this.$store.commit('toggleModal', 'reminder')
     },
     openRoleModal(playerIndex) {
-      const player = this.players[playerIndex];
-      if (this.session.isSpectator && player && player.role.team === "traveler")
-        return;
-      this.selectedPlayer = playerIndex;
-      this.$store.commit("toggleModal", "role");
+      const player = this.players[playerIndex]
+      if (this.session.isSpectator && player && player.role.team === 'traveler') return
+      this.selectedPlayer = playerIndex
+      this.$store.commit('toggleModal', 'role')
     },
     removePlayer(playerIndex) {
-      if (this.session.isSpectator || this.session.lockedVote) return;
-      if (
-        confirm(`Vill du verkligen ta bort ${this.players[playerIndex].name}?`)
-      ) {
-        const { nomination } = this.session;
+      if (this.session.isSpectator || this.session.lockedVote) return
+      if (confirm(`Vill du verkligen ta bort ${this.players[playerIndex].name}?`)) {
+        const { nomination } = this.session
         if (nomination) {
           if (nomination.includes(playerIndex)) {
             // abort vote if removed player is either nominator or nominee
-            this.$store.commit("session/nomination");
-          } else if (
-            nomination[0] > playerIndex ||
-            nomination[1] > playerIndex
-          ) {
+            this.$store.commit('session/nomination')
+          } else if (nomination[0] > playerIndex || nomination[1] > playerIndex) {
             // update nomination array if removed player has lower index
-            this.$store.commit("session/setNomination", [
+            this.$store.commit('session/setNomination', [
               nomination[0] > playerIndex ? nomination[0] - 1 : nomination[0],
-              nomination[1] > playerIndex ? nomination[1] - 1 : nomination[1]
-            ]);
+              nomination[1] > playerIndex ? nomination[1] - 1 : nomination[1],
+            ])
           }
         }
-        this.$store.commit("players/remove", playerIndex);
+        this.$store.commit('players/remove', playerIndex)
       }
     },
     swapPlayer(from, to) {
-      if (this.session.isSpectator || this.session.lockedVote) return;
+      if (this.session.isSpectator || this.session.lockedVote) return
       if (to === undefined) {
-        this.cancel();
-        this.swap = from;
+        this.cancel()
+        this.swap = from
       } else {
         if (this.session.nomination) {
           // update nomination if one of the involved players is swapped
-          const swapTo = this.players.indexOf(to);
-          const updatedNomination = this.session.nomination.map(nom => {
-            if (nom === this.swap) return swapTo;
-            if (nom === swapTo) return this.swap;
-            return nom;
-          });
-          if (
-            this.session.nomination[0] !== updatedNomination[0] ||
-            this.session.nomination[1] !== updatedNomination[1]
-          ) {
-            this.$store.commit("session/setNomination", updatedNomination);
+          const swapTo = this.players.indexOf(to)
+          const updatedNomination = this.session.nomination.map((nom) => {
+            if (nom === this.swap) return swapTo
+            if (nom === swapTo) return this.swap
+            return nom
+          })
+          if (this.session.nomination[0] !== updatedNomination[0] || this.session.nomination[1] !== updatedNomination[1]) {
+            this.$store.commit('session/setNomination', updatedNomination)
           }
         }
-        this.$store.commit("players/swap", [
-          this.swap,
-          this.players.indexOf(to)
-        ]);
-        this.cancel();
+        this.$store.commit('players/swap', [this.swap, this.players.indexOf(to)])
+        this.cancel()
       }
     },
     movePlayer(from, to) {
-      if (this.session.isSpectator || this.session.lockedVote) return;
+      if (this.session.isSpectator || this.session.lockedVote) return
       if (to === undefined) {
-        this.cancel();
-        this.move = from;
+        this.cancel()
+        this.move = from
       } else {
         if (this.session.nomination) {
           // update nomination if it is affected by the move
-          const moveTo = this.players.indexOf(to);
-          const updatedNomination = this.session.nomination.map(nom => {
-            if (nom === this.move) return moveTo;
-            if (nom > this.move && nom <= moveTo) return nom - 1;
-            if (nom < this.move && nom >= moveTo) return nom + 1;
-            return nom;
-          });
-          if (
-            this.session.nomination[0] !== updatedNomination[0] ||
-            this.session.nomination[1] !== updatedNomination[1]
-          ) {
-            this.$store.commit("session/setNomination", updatedNomination);
+          const moveTo = this.players.indexOf(to)
+          const updatedNomination = this.session.nomination.map((nom) => {
+            if (nom === this.move) return moveTo
+            if (nom > this.move && nom <= moveTo) return nom - 1
+            if (nom < this.move && nom >= moveTo) return nom + 1
+            return nom
+          })
+          if (this.session.nomination[0] !== updatedNomination[0] || this.session.nomination[1] !== updatedNomination[1]) {
+            this.$store.commit('session/setNomination', updatedNomination)
           }
         }
-        this.$store.commit("players/move", [
-          this.move,
-          this.players.indexOf(to)
-        ]);
-        this.cancel();
+        this.$store.commit('players/move', [this.move, this.players.indexOf(to)])
+        this.cancel()
       }
     },
     nominatePlayer(from, to) {
-      if (this.session.isSpectator || this.session.lockedVote) return;
+      if (this.session.isSpectator || this.session.lockedVote) return
       if (to === undefined) {
-        this.cancel();
+        this.cancel()
         if (from !== this.nominate) {
-          this.nominate = from;
+          this.nominate = from
         }
       } else {
-        const nomination = [this.nominate, this.players.indexOf(to)];
-        this.$store.commit("session/nomination", { nomination });
-        this.cancel();
+        const nomination = [this.nominate, this.players.indexOf(to)]
+        this.$store.commit('session/nomination', { nomination })
+        this.cancel()
       }
     },
     cancel() {
-      this.move = -1;
-      this.swap = -1;
-      this.nominate = -1;
-    }
-  }
-};
+      this.move = -1
+      this.swap = -1
+      this.nominate = -1
+    },
+  },
+}
 </script>
 
 <style lang="scss">
-@import "../vars.scss";
+@import '../vars.scss';
 
 #townsquare {
   width: 100%;
@@ -489,10 +453,10 @@ export default {
 }
 
 .fabled ul li .token:before {
-  content: " ";
+  content: ' ';
   opacity: 0;
   transition: opacity 250ms;
-  background-image: url("../assets/icons/x.svg");
+  background-image: url('../assets/icons/x.svg');
   z-index: 2;
 }
 
@@ -509,7 +473,7 @@ export default {
   pointer-events: none;
 
   &:after {
-    content: " ";
+    content: ' ';
     display: block;
     padding-top: 100%;
   }
@@ -552,7 +516,7 @@ export default {
     }
 
     &:after {
-      content: " ";
+      content: ' ';
       border: 10px solid transparent;
       width: 0;
       height: 0;
@@ -562,13 +526,9 @@ export default {
 
   &.first span {
     right: 120%;
-    background: linear-gradient(
-      to right,
-      $townsfolk 0%,
-      rgba(0, 0, 0, 0.5) 20%
-    );
+    background: linear-gradient(to right, $townsfolk 0%, rgba(0, 0, 0, 0.5) 20%);
     &:before {
-      content: "Första Natt";
+      content: 'Första Natt';
     }
     &:after {
       border-left-color: $townsfolk;
@@ -581,7 +541,7 @@ export default {
     left: 120%;
     background: linear-gradient(to right, $demon 0%, rgba(0, 0, 0, 0.5) 20%);
     &:before {
-      content: "Övrig Natt";
+      content: 'Övrig Natt';
     }
     &:after {
       right: 100%;
@@ -641,5 +601,22 @@ export default {
 
 #townsquare:not(.spectator) .fabled ul li:hover .token:before {
   opacity: 1;
+}
+
+#fanfare-icon {
+  background-color: #efbd29;
+  position: absolute;
+  z-index: 1000;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  padding: 6%;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  border: 10px solid white;
+}
+#fanfare-icon svg {
+  width: 100%;
+  height: 100%;
 }
 </style>

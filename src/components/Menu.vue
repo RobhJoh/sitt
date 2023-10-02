@@ -2,7 +2,6 @@
   <div id="controls">
     <audio id="fanfare" src="../assets/sounds/trumpet-royal-fanfare.mp3" preload="auto"></audio>
     <div class="fanfare" v-if="session.isPlayFanfare">
-      <span></span>
       <audio
         :autoplay="!grimoire.isMuted"
         src="../assets/sounds/trumpet-royal-fanfare.mp3"
@@ -254,16 +253,17 @@ export default {
       }
     },
     playFanfare() {
-      console.log('playFanfare()')
       if (this.session.isSpectator) return
       const popup = 'Vill du spela upp Tronsals fanfaren?'
       if (confirm(popup)) {
         this.$store.commit('session/setPlayFanfare', true)
+        console.log('true')
         setTimeout(
           (() => {
             this.$store.commit('session/setPlayFanfare', false)
+            console.log('false')
           }).bind(this),
-          3000
+          5000
         )
       }
       // const audio = document.getElementById('fanfare')

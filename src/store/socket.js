@@ -821,9 +821,9 @@ export default (store) => {
         }
         break
       case 'session/setPlayFanfare':
-        if (payload) {
-          session.setPlayFanfare()
-        }
+        // if (payload) {
+        session.setPlayFanfare(payload)
+        // }
         break
       case 'session/nomination':
       case 'session/setNomination':
