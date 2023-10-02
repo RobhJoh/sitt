@@ -1,6 +1,14 @@
 <template>
   <div id="controls">
     <audio id="fanfare" src="../assets/sounds/trumpet-royal-fanfare.mp3" preload="auto"></audio>
+    <div class="fanfare" v-if="session.isPlayFanfare">
+      <span></span>
+      <audio
+        :autoplay="!grimoire.isMuted"
+        src="../assets/sounds/trumpet-royal-fanfare.mp3"
+        :muted="grimoire.isMuted"
+      ></audio>
+    </div>
     <span
       class="nomlog-summary"
       v-show="session.voteHistory.length && session.sessionId"
@@ -246,12 +254,24 @@ export default {
       }
     },
     playFanfare() {
-      const audio = document.getElementById('fanfare')
-      if (confirm('Vill du spela upp Tronsals fanfaren?')) {
-        console.log('Play Fanfare')
-        audio.volume = 0.2
-        audio.play()
+      console.log('playFanfare()')
+      if (this.session.isSpectator) return
+      const popup = 'Vill du spela upp Tronsals fanfaren?'
+      if (confirm(popup)) {
+        this.$store.commit('session/setPlayFanfare', true)
+        setTimeout(
+          (() => {
+            this.$store.commit('session/setPlayFanfare', false)
+          }).bind(this),
+          3000
+        )
       }
+      // const audio = document.getElementById('fanfare')
+      // if (confirm('Vill du spela upp Tronsals fanfaren?')) {
+      //   console.log('Play Fanfare')
+      //   audio.volume = 0.2
+      //   audio.play()
+      // }
     },
     imageOptIn() {
       const popup =

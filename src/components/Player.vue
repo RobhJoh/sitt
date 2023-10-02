@@ -10,70 +10,37 @@
           'no-vote': player.isVoteless,
           you: session.sessionId && player.id && player.id === session.playerId,
           'vote-yes': session.votes[index],
-          'vote-lock': voteLocked
+          'vote-lock': voteLocked,
         },
-        player.role.team
+        player.role.team,
       ]"
     >
       <div class="shroud" @click="toggleStatus()"></div>
       <div class="life" @click="toggleStatus()"></div>
 
-      <div
-        class="night-order first"
-        v-if="nightOrder.get(player).first && grimoire.isNightOrder"
-      >
+      <div class="night-order first" v-if="nightOrder.get(player).first && grimoire.isNightOrder">
         <em>{{ nightOrder.get(player).first }}.</em>
-        <span v-if="player.role.firstNightReminder">{{
-          player.role.firstNightReminder
-        }}</span>
+        <span v-if="player.role.firstNightReminder">{{ player.role.firstNightReminder }}</span>
       </div>
-      <div
-        class="night-order other"
-        v-if="nightOrder.get(player).other && grimoire.isNightOrder"
-      >
+      <div class="night-order other" v-if="nightOrder.get(player).other && grimoire.isNightOrder">
         <em>{{ nightOrder.get(player).other }}.</em>
-        <span v-if="player.role.otherNightReminder">{{
-          player.role.otherNightReminder
-        }}</span>
+        <span v-if="player.role.otherNightReminder">{{ player.role.otherNightReminder }}</span>
       </div>
 
-      <Token
-        :role="player.role"
-        @set-role="$emit('trigger', ['openRoleModal'])"
-      />
+      <Token :role="player.role" @set-role="$emit('trigger', ['openRoleModal'])" />
 
       <!-- Overlay icons -->
       <div class="overlay">
-        <font-awesome-icon
-          icon="hand-paper"
-          class="vote"
-          title="Hand UP"
-          @click="vote()"
-        />
-        <font-awesome-icon
-          icon="times"
-          class="vote"
-          title="Hand DOWN"
-          @click="vote()"
-        />
-        <font-awesome-icon
-          icon="times-circle"
-          class="cancel"
-          title="Cancel"
-          @click="cancel()"
-        />
+        <font-awesome-icon icon="hand-paper" class="vote" title="Hand UP" @click="vote()" />
+        <font-awesome-icon icon="times" class="vote" title="Hand DOWN" @click="vote()" />
+        <font-awesome-icon icon="times-circle" class="cancel" title="Cancel" @click="cancel()" />
         <font-awesome-icon
           icon="exchange-alt"
           class="swap"
           @click="swapPlayer(player)"
           title="Swap seats with this player"
         />
-        <font-awesome-icon
-          icon="redo-alt"
-          class="move"
-          @click="movePlayer(player)"
-          title="Move player to this seat"
-        />
+        <font-awesome-icon icon="redo-alt" class="move" @click="movePlayer(player)" title="Move player to this seat" />
         <font-awesome-icon
           icon="hand-point-right"
           class="nominate"
@@ -103,11 +70,7 @@
       <div class="marked">
         <font-awesome-icon icon="times" />
       </div>
-      <div
-        class="name"
-        @click="isMenuOpen = !isMenuOpen"
-        :class="{ active: isMenuOpen }"
-      >
+      <div class="name" @click="isMenuOpen = !isMenuOpen" :class="{ active: isMenuOpen }">
         <span>{{ player.name }}</span>
         <font-awesome-icon icon="venus-mars" v-if="player.pronouns" />
         <div class="pronouns" v-if="player.pronouns">
@@ -121,9 +84,7 @@
             <font-awesome-icon icon="venus-mars" />Change Pronouns
           </li> -->
           <template v-if="!session.isSpectator">
-            <li @click="changeName">
-              <font-awesome-icon icon="user-edit" />Ändra namn
-            </li>
+            <li @click="changeName"><font-awesome-icon icon="user-edit" />Ändra namn</li>
             <li @click="movePlayer()" :class="{ disabled: session.lockedVote }">
               <font-awesome-icon icon="redo-alt" />
               Flytta spelare
@@ -136,10 +97,7 @@
               <font-awesome-icon icon="times-circle" />
               Ta bort
             </li>
-            <li
-              @click="updatePlayer('id', '', true)"
-              v-if="player.id && session.sessionId"
-            >
+            <li @click="updatePlayer('id', '', true)" v-if="player.id && session.sessionId">
               <font-awesome-icon icon="chair" />
               Tom plats
             </li>
@@ -182,10 +140,8 @@
             backgroundImage: `url(${
               reminder.image && grimoire.isImageOptIn
                 ? reminder.image
-                : require('../assets/icons/' +
-                    (reminder.imageAlt || reminder.role) +
-                    '.svg')
-            })`
+                : require('../assets/icons/' + (reminder.imageAlt || reminder.role) + '.svg')
+            })`,
           }"
         ></span>
         <span class="text">{{ reminder.name }}</span>
@@ -199,152 +155,142 @@
 </template>
 
 <script>
-import Token from "./Token";
-import { mapGetters, mapState } from "vuex";
+import Token from './Token'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   components: {
-    Token
+    Token,
   },
   props: {
     player: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
-    ...mapState("players", ["players"]),
-    ...mapState(["grimoire", "session"]),
-    ...mapGetters({ nightOrder: "players/nightOrder" }),
+    ...mapState('players', ['players']),
+    ...mapState(['grimoire', 'session']),
+    ...mapGetters({ nightOrder: 'players/nightOrder' }),
     index: function() {
-      return this.players.indexOf(this.player);
+      return this.players.indexOf(this.player)
     },
     voteLocked: function() {
-      const session = this.session;
-      const players = this.players.length;
-      if (!session.nomination) return false;
-      const indexAdjusted =
-        (this.index - 1 + players - session.nomination[1]) % players;
-      return indexAdjusted < session.lockedVote - 1;
+      const session = this.session
+      const players = this.players.length
+      if (!session.nomination) return false
+      const indexAdjusted = (this.index - 1 + players - session.nomination[1]) % players
+      return indexAdjusted < session.lockedVote - 1
     },
     zoom: function() {
-      const unit = window.innerWidth > window.innerHeight ? "vh" : "vw";
+      const unit = window.innerWidth > window.innerHeight ? 'vh' : 'vw'
       if (this.players.length < 7) {
-        return { width: 18 + this.grimoire.zoom + unit };
+        return { width: 18 + this.grimoire.zoom + unit }
       } else if (this.players.length <= 10) {
-        return { width: 16 + this.grimoire.zoom + unit };
+        return { width: 16 + this.grimoire.zoom + unit }
       } else if (this.players.length <= 15) {
-        return { width: 14 + this.grimoire.zoom + unit };
+        return { width: 14 + this.grimoire.zoom + unit }
       } else {
-        return { width: 12 + this.grimoire.zoom + unit };
+        return { width: 12 + this.grimoire.zoom + unit }
       }
-    }
+    },
   },
   data() {
     return {
       isMenuOpen: false,
-      isSwap: false
-    };
+      isSwap: false,
+    }
   },
   methods: {
     changePronouns() {
-      if (this.session.isSpectator && this.player.id !== this.session.playerId)
-        return;
-      const pronouns = prompt("Player pronouns", this.player.pronouns);
+      if (this.session.isSpectator && this.player.id !== this.session.playerId) return
+      const pronouns = prompt('Player pronouns', this.player.pronouns)
       //Only update pronouns if not null (prompt was not cancelled)
       if (pronouns !== null) {
-        this.updatePlayer("pronouns", pronouns, true);
+        this.updatePlayer('pronouns', pronouns, true)
       }
     },
     toggleStatus() {
       if (this.grimoire.isPublic) {
         if (!this.player.isDead) {
-          this.updatePlayer("isDead", true);
+          this.updatePlayer('isDead', true)
           if (this.player.isMarked) {
-            this.updatePlayer("isMarked", false);
+            this.updatePlayer('isMarked', false)
           }
         } else if (this.player.isVoteless) {
-          this.updatePlayer("isVoteless", false);
-          this.updatePlayer("isDead", false);
+          this.updatePlayer('isVoteless', false)
+          this.updatePlayer('isDead', false)
         } else {
-          this.updatePlayer("isVoteless", true);
+          this.updatePlayer('isVoteless', true)
         }
       } else {
-        this.updatePlayer("isDead", !this.player.isDead);
+        this.updatePlayer('isDead', !this.player.isDead)
         if (this.player.isMarked) {
-          this.updatePlayer("isMarked", false);
+          this.updatePlayer('isMarked', false)
         }
         if (this.player.isVoteless) {
-          this.updatePlayer("isVoteless", false);
+          this.updatePlayer('isVoteless', false)
         }
       }
     },
     changeName() {
-      if (this.session.isSpectator) return;
-      const name = prompt("Player name", this.player.name) || this.player.name;
-      this.updatePlayer("name", name, true);
+      if (this.session.isSpectator) return
+      const name = prompt('Player name', this.player.name) || this.player.name
+      this.updatePlayer('name', name, true)
     },
     removeReminder(reminder) {
-      const reminders = [...this.player.reminders];
-      reminders.splice(this.player.reminders.indexOf(reminder), 1);
-      this.updatePlayer("reminders", reminders, true);
+      const reminders = [...this.player.reminders]
+      reminders.splice(this.player.reminders.indexOf(reminder), 1)
+      this.updatePlayer('reminders', reminders, true)
     },
     updatePlayer(property, value, closeMenu = false) {
-      if (
-        this.session.isSpectator &&
-        property !== "reminders" &&
-        property !== "pronouns"
-      )
-        return;
-      this.$store.commit("players/update", {
+      if (this.session.isSpectator && property !== 'reminders' && property !== 'pronouns') return
+      this.$store.commit('players/update', {
         player: this.player,
         property,
-        value
-      });
+        value,
+      })
       if (closeMenu) {
-        this.isMenuOpen = false;
+        this.isMenuOpen = false
       }
     },
     removePlayer() {
-      this.isMenuOpen = false;
-      this.$emit("trigger", ["removePlayer"]);
+      this.isMenuOpen = false
+      this.$emit('trigger', ['removePlayer'])
     },
     swapPlayer(player) {
-      this.isMenuOpen = false;
-      this.$emit("trigger", ["swapPlayer", player]);
+      this.isMenuOpen = false
+      this.$emit('trigger', ['swapPlayer', player])
     },
     movePlayer(player) {
-      this.isMenuOpen = false;
-      this.$emit("trigger", ["movePlayer", player]);
+      this.isMenuOpen = false
+      this.$emit('trigger', ['movePlayer', player])
     },
     nominatePlayer(player) {
-      this.isMenuOpen = false;
-      this.$emit("trigger", ["nominatePlayer", player]);
+      this.isMenuOpen = false
+      this.$emit('trigger', ['nominatePlayer', player])
     },
     cancel() {
-      this.$emit("trigger", ["cancel"]);
+      this.$emit('trigger', ['cancel'])
     },
     claimSeat() {
-      this.isMenuOpen = false;
-      this.$emit("trigger", ["claimSeat"]);
+      this.isMenuOpen = false
+      this.$emit('trigger', ['claimSeat'])
     },
     /**
      * Allow the ST to override a locked vote.
      */
     vote() {
-      if (this.session.isSpectator) return;
-      if (!this.voteLocked) return;
-      this.$store.commit("session/voteSync", [
-        this.index,
-        !this.session.votes[this.index]
-      ]);
-    }
-  }
-};
+      if (this.session.isSpectator) return
+      if (!this.voteLocked) return
+      this.$store.commit('session/voteSync', [this.index, !this.session.votes[this.index]])
+    },
+  },
+}
 </script>
 
 <style lang="scss">
-@import "../vars.scss";
+@import '../vars.scss';
 
 .fold-enter-active,
 .fold-leave-active {
@@ -362,7 +308,7 @@ export default {
   margin-bottom: 10px;
 
   &:before {
-    content: " ";
+    content: ' ';
     display: block;
     padding-top: 100%;
   }
@@ -381,8 +327,8 @@ export default {
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
 
     &:before {
-      content: " ";
-      background: url("../assets/shroud.png") center -10px no-repeat;
+      content: ' ';
+      background: url('../assets/shroud.png') center -10px no-repeat;
       background-size: auto 110%;
       position: absolute;
       margin-left: -50%;
@@ -425,7 +371,7 @@ export default {
   .life {
     border-radius: 50%;
     width: 100%;
-    background: url("../assets/life.svg") center center;
+    background: url('../assets/life.svg') center center;
     background-size: 155%;
     border: 3px solid black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -438,7 +384,7 @@ export default {
     top: 0;
 
     &:before {
-      content: " ";
+      content: ' ';
       display: block;
       padding-top: 100%;
     }
@@ -450,15 +396,15 @@ export default {
     }
 
     .life {
-      background-image: url("../assets/death.svg");
+      background-image: url('../assets/death.svg');
 
       &:after {
-        content: " ";
+        content: ' ';
         position: absolute;
         left: 0px;
         top: 0px;
         width: 100%;
-        background: url("../assets/vote.svg") center center no-repeat;
+        background: url('../assets/vote.svg') center center no-repeat;
         background-size: 75%;
         height: 100%;
         pointer-events: none;
@@ -517,7 +463,7 @@ export default {
   align-items: center;
   justify-content: center;
   &:after {
-    content: " ";
+    content: ' ';
     display: block;
     padding-top: 100%;
   }
@@ -626,11 +572,11 @@ li.move:not(.from) .player .overlay svg.move {
   }
 }
 
-@include glow("townsfolk", $townsfolk);
-@include glow("outsider", $outsider);
-@include glow("demon", $demon);
-@include glow("minion", $minion);
-@include glow("traveler", $traveler);
+@include glow('townsfolk', $townsfolk);
+@include glow('outsider', $outsider);
+@include glow('demon', $demon);
+@include glow('minion', $minion);
+@include glow('traveler', $traveler);
 
 .player.you .token {
   animation: townsfolk-glow 5s ease-in-out infinite;
@@ -649,7 +595,7 @@ li.move:not(.from) .player .overlay svg.move {
   transition: opacity 250ms;
   opacity: 0;
   &:before {
-    content: " ";
+    content: ' ';
     padding-top: 100%;
     display: block;
   }
@@ -755,7 +701,7 @@ li.move:not(.from) .player .overlay svg.move {
     bottom: -3px;
 
     &:before {
-      content: " ";
+      content: ' ';
       border: 10px solid transparent;
       width: 0;
       height: 0;
@@ -787,7 +733,7 @@ li.move:not(.from) .player .overlay svg.move {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
   &:before {
-    content: " ";
+    content: ' ';
     width: 0;
     height: 0;
     position: absolute;
@@ -836,7 +782,7 @@ li.move:not(.from) .player .overlay svg.move {
 
 /***** Reminder token *****/
 .circle .reminder {
-  background: url("../assets/reminder.svg") center center;
+  background: url('../assets/reminder.svg') center center;
   background-size: 160%;
   width: 50%;
   height: 0;
@@ -863,13 +809,12 @@ li.move:not(.from) .player .overlay svg.move {
     width: 100%;
     position: absolute;
     top: 15%;
-    text-shadow: 0 1px 1px #f6dfbd, 0 -1px 1px #f6dfbd, 1px 0 1px #f6dfbd,
-      -1px 0 1px #f6dfbd;
+    text-shadow: 0 1px 1px #f6dfbd, 0 -1px 1px #f6dfbd, 1px 0 1px #f6dfbd, -1px 0 1px #f6dfbd;
   }
 
   .icon,
   &:after {
-    content: " ";
+    content: ' ';
     position: absolute;
     top: 0px;
     width: 60%;
@@ -877,12 +822,12 @@ li.move:not(.from) .player .overlay svg.move {
     background-size: contain;
     background-position: center 8px;
     background-repeat: no-repeat;
-    background-image: url("../assets/icons/plus.svg");
+    background-image: url('../assets/icons/plus.svg');
     transition: opacity 200ms;
   }
 
   &:after {
-    background-image: url("../assets/icons/x.svg");
+    background-image: url('../assets/icons/x.svg');
     opacity: 0;
     top: 10%;
   }
