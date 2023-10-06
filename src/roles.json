@@ -193,7 +193,7 @@
     "reminders": [],
     "remindersGlobal": ["Byfåne"],
     "setup": true,
-    "ability": "Du vet inte att du är Byfånen. Du tror att du är en av Hovfolket, men det är du inte."
+    "ability": "Du vet inte att du är Byfånen. Du tror att du är en av Hovfolket, men det är du inte utan du är förvirrad."
   },
   {
     "id": "recluse",
