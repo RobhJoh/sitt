@@ -17,8 +17,8 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          npm install  # Or any build commands you need
-          npm run build  # Replace with your build script
+          npm install
+          npm run build
           git checkout gh-pages
           git rm -rf .
           mv /dist/* .
