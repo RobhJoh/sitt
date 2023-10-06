@@ -86,7 +86,7 @@
     "firstNightReminder": "",
     "otherNight": 56,
     "otherNightReminder": "Om en spelare blev utkastad idag: Visa den spelarens karaktärmarkör.",
-    "reminders": ["Imprisoned"],
+    "reminders": ["Utkastad"],
     "setup": false,
     "ability": "Varje natt får du veta vilken karaktär som kastades ut ur hovet idag."
   },
@@ -179,7 +179,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "Om du blir utkastad förlorar ditt lag."
+    "ability": "Om du blir utkastad under dagen förlorar ditt lag."
   },
   {
     "id": "villageidiot",
