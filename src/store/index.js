@@ -4,10 +4,13 @@ import persistence from "./persistence";
 import socket from "./socket";
 import players from "./modules/players";
 import session from "./modules/session";
+import expressionsJSON from "../expressions.json";
 import editionJSON from "../editions.json";
 import rolesJSON from "../roles.json";
 import fabledJSON from "../fabled.json";
 import jinxesJSON from "../hatred.json";
+
+console.log(expressionsJSON);
 
 Vue.use(Vuex);
 
@@ -110,6 +113,7 @@ export default new Vuex.Store({
     },
     modals: {
       edition: false,
+      expressions: false,
       fabled: false,
       gameState: false,
       nightOrder: false,
@@ -172,6 +176,8 @@ export default new Vuex.Store({
     toggleGrimoire: toggle("isPublic"),
     toggleImageOptIn: toggle("isImageOptIn"),
     toggleModal({ modals }, name) {
+      console.log(name);
+      console.log(modals[name]);
       if (name) {
         modals[name] = !modals[name];
       }

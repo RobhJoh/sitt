@@ -29,6 +29,7 @@
     <TownSquare></TownSquare>
     <Menu ref="menu"></Menu>
     <EditionModal />
+    <ExpressionsModal />
     <FabledModal />
     <RolesModal />
     <ReferenceModal />
@@ -48,6 +49,7 @@ import TownInfo from "./components/TownInfo";
 import Menu from "./components/Menu";
 import RolesModal from "./components/modals/RolesModal";
 import EditionModal from "./components/modals/EditionModal";
+import ExpressionsModal from "./components/modals/ExpressionsModal";
 import Intro from "./components/Intro";
 import ReferenceModal from "./components/modals/ReferenceModal";
 import Vote from "./components/Vote";
@@ -65,6 +67,7 @@ export default {
     NightOrderModal,
     Vote,
     ReferenceModal,
+    ExpressionsModal,
     Intro,
     TownInfo,
     TownSquare,
@@ -100,6 +103,9 @@ export default {
           break;
         case "j":
           this.$refs.menu.joinSession();
+          break;
+        case "u":
+          this.$store.commit("toggleModal", "expressions");
           break;
         case "r":
           this.$store.commit("toggleModal", "reference");

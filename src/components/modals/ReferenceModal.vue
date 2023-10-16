@@ -25,9 +25,9 @@
         <h4>
           {{
             team === "townsfolk"
-              ? "Hovfolk"
+              ? "Adeln"
               : team === "outsider"
-              ? "Hushållet"
+              ? "Tjänare"
               : team === "minion"
               ? "Hantlangare"
               : team === "demon"

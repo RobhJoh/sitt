@@ -57,12 +57,12 @@
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 32,
-    "firstNightReminder": "Visa karaktärsmarkören för ett Hovfolk i spel. Peka på två spelare, varav en är den karaktären.",
+    "firstNightReminder": "Visa karaktärsmarkören för en roll i Adeln i spel. Peka på två spelare, varav en är den karaktären.",
     "otherNight": 0,
     "otherNightReminder": "",
-    "reminders": ["Hovfolk", "Fel"],
+    "reminders": ["Adel", "Fel"],
     "setup": false,
-    "ability": "Du börjar spelet med informationen att 1 av 2 spelare är ett visst Hovfolk."
+    "ability": "Du börjar spelet med informationen att 1 av 2 spelare är en roll i Adeln."
   },
   {
     "id": "chancellor",
@@ -75,7 +75,7 @@
     "otherNightReminder": "Kanslern pekar på två spelare. Ge huvudsignalen (nicka ja, skaka nej) för om en av dessa spelare är Troninkräktaren.",
     "reminders": ["Villospår"],
     "setup": false,
-    "ability": "Varje natt väljer du 2 spelare: du får reda på om en av de är Troninkräktaren. Det finns en av Hovfolket som registreras som Troninkräktaren för dig."
+    "ability": "Varje natt väljer du 2 spelare: du får reda på om en av de är Troninkräktaren. Det finns en av Adeln som registreras som Troninkräktaren för dig."
   },
   {
     "id": "constable",
@@ -85,8 +85,8 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 56,
-    "otherNightReminder": "Om en spelare blev utkastad idag: Visa den spelarens karaktärmarkör.",
-    "reminders": ["Utkastad"],
+    "otherNightReminder": "Om en spelare blev utröstad idag: Visa den spelarens karaktärmarkör.",
+    "reminders": ["Utröstad"],
     "setup": false,
     "ability": "Varje natt får du veta vilken karaktär som kastades ut ur hovet idag."
   },
@@ -114,7 +114,7 @@
     "otherNightReminder": "",
     "reminders": ["Ingen förmåga"],
     "setup": false,
-    "ability": "Första gången du blir nominerad, om den som nominerade dig är Hovfolk kastas de direkt ut ur hovet."
+    "ability": "Första gången du blir nominerad, om den som nominerade dig är Adlig kastas de direkt ut ur hovet."
   },
   {
     "id": "prince",
@@ -127,7 +127,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "Om bara tre spelare är kvar i hovet och ingen blir utkastad, så vinner ditt lag. Om du blir förvisad under natten så kan en annan spelare bli förvisad istället."
+    "ability": "Om bara tre spelare är kvar i hovet och ingen blir utröstad, så vinner ditt lag. Om du blir förvisad under natten så kan en annan spelare bli förvisad istället."
   },
   {
     "id": "seneschal",
@@ -135,12 +135,12 @@
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 33,
-    "firstNightReminder": "Visa karaktärssymbolen för en Hushålls karaktär i spel. Peka på två spelare, varav en är den karaktären.",
+    "firstNightReminder": "Visa karaktärssymbolen för en Tjänare i spel. Peka på två spelare, varav en är den karaktären.",
     "otherNight": 0,
     "otherNightReminder": "",
-    "reminders": ["Hushållet", "Fel"],
+    "reminders": ["Tjänare", "Fel"],
     "setup": false,
-    "ability": "Du börjar spelet med information att 1 av 2 spelare är en viss del av Hushållet. (Eller att ingen är i spel)."
+    "ability": "Du börjar spelet med information att 1 av 2 spelare är en viss Tjänare. (Eller att ingen är i spel)."
   },
   {
     "id": "treasurer",
@@ -179,7 +179,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "Om du blir utkastad under dagen förlorar ditt lag."
+    "ability": "Om du blir utröstad under dagen förlorar ditt lag."
   },
   {
     "id": "villageidiot",
@@ -193,7 +193,7 @@
     "reminders": [],
     "remindersGlobal": ["Byfåne"],
     "setup": true,
-    "ability": "Du vet inte att du är Byfånen. Du tror att du är en av Hovfolket, men det är du inte utan du är förvirrad."
+    "ability": "Du vet inte att du är Byfånen. Du tror att du är en roll i Adeln, men det är du inte utan du är förvirrad."
   },
   {
     "id": "recluse",
@@ -258,7 +258,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": true,
-    "ability": "Det är 2 extra i Hushållet detta spel. [+2 Hushållet]"
+    "ability": "Det är 2 extra Tjänare detta spel. [+2 Tjänare]"
   },
   {
     "id": "spy",
@@ -271,7 +271,7 @@
     "otherNightReminder": "Visa de Kungliga Hemligheternas Bok för Spionen så länge de behöver.",
     "reminders": [],
     "setup": false,
-    "ability": "Varje natt ser du de Kungliga Hemligheternas Bok. Du kan registrera som en Lojal & som Hovfolk eller Hushållet, även om du inte är i hovet längre."
+    "ability": "Varje natt ser du de Kungliga Hemligheternas Bok. Du kan registrera som en Lojal & som Adel eller Tjänare, även om du inte är i hovet längre."
   },
   {
     "id": "duke",

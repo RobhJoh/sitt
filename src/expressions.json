@@ -1,0 +1,228 @@
+[
+  {
+    "id": "nobels",
+    "alignment": "loyal",
+    "headline": "Adeln",
+    "paragraphs": [
+      "Dessa roller tillhör de Lojala laget. Har förmågor som hjälper de lojala med att antingen utföra saker eller få information."
+    ]
+  },
+  {
+    "id": "storyteller",
+    "alignment": "neutral",
+    "headline": "Berättare",
+    "paragraphs": [
+      "Personen som leder spelet. Denne är ingen spelare utan helt neutral när det kommer till lagen Lojala och Inkräktare. Har då ett helt eget mål under spelets gång och det är att få spelet jämnt, roligt och spännande för spelarna.",
+      "Det är berättaren som sätter upp och förbereder spelet samt bestämmer när dagar slutar och nomineringar kan göras. Den delar ut information under natten samt tar beslut när och vad för falsk information som ges. Falsk information ges av berättaren med tanken att hjälpa det laget som då har det svårast."
+    ]
+  },
+  {
+    "id": "day",
+    "alignment": "neutral",
+    "headline": "Dag/Dagfas",
+    "paragraphs": [
+      "En fas i spelet som i sig är delad i två delar, samtal och nominering.",
+      "Under samtals delen av dagen så kan alla spelare fritt samtala med varandra, antingen offentligt med alla eller privat med dem de vill. När samtalen pågått under en viss tid, som bestäms av berättaren, går det över till nomineringsdelen.",
+      "Under delen för nomineringar så samlas alla spelare. Samtal får fortfarande hållas men då bara offentligt samt så är det öppet att nominera andra spelare."
+    ]
+  },
+  {
+    "id": "poison",
+    "alignment": "neutral",
+    "headline": "Förgiftad",
+    "paragraphs": [
+      "Flera olika rollers förmågor kan göra en spelare förgiftad. Oftast håller en förgiftning i endast en natt och efterföljande dag.",
+      "Är en spelare förgiftad så fungerar inte deras rolls förmåga, vad de försöker göra kommer inte att gå. Samt den informationen de får kan vara falsk, den behöver inte vara falsk men kommer oftast vara det.",
+      "Men spelaren kommer inte att få reda på att denne är förgiftad utan måste klura ut det själv. Så spelledaren kommer att agera som om spelaren inte var förgiftad men informationen den får är mest troligen falsk eller det den gör kommer inte fungera."
+    ]
+  },
+  {
+    "id": "ability",
+    "alignment": "neutral",
+    "headline": "Förmåga",
+    "paragraphs": ["Förmåga är något specifikt som en spelares roll kan utföra eller få veta."]
+  },
+  {
+    "id": "confused",
+    "alignment": "neutral",
+    "headline": "Förvirrad",
+    "paragraphs": [
+      "En spelare kan antingen vara förvirrad från början eller bli tillfälligt förvirrad på grund av sin eller någon annan rolls förmåga.",
+      "Är en spelare förvirrad så fungerar inte deras rolls förmåga, vad de försöker göra kommer inte att gå. Samt den informationen de får kan vara falsk, den behöver inte vara falsk men kommer oftast vara det.",
+      "Men spelaren kommer inte att få reda på att denne är förvirrad utan måste klura ut det själv. Så spelledaren kommer att agera som om spelaren inte var förvirrad men informationen den får är mest troligen falsk eller det den gör kommer inte fungera."
+    ]
+  },
+  {
+    "id": "banished",
+    "alignment": "intruder",
+    "headline": "Förvisad från hovet",
+    "paragraphs": [
+      "Förvisning sker endast på natten och görs av Troninkräktaren. En förvisad spelare är inte längre någon del av hovet."
+    ]
+  },
+  {
+    "id": "mad",
+    "alignment": "neutral",
+    "headline": "Galen",
+    "paragraphs": [
+      "En spelare kan bli galen på grund av någon annan rolls förmåga.",
+      "En galen spelare är alltid galen över något specifikt och försöker då genuint övertyga gruppen om att det de är galen över är sant, även om det i verkligheten inte är sant. Om de inte försöker övertyga gruppen om det de är galna över så händer något dåligt deras lag."
+    ]
+  },
+  {
+    "id": "neighbor",
+    "alignment": "neutral",
+    "headline": "Granne",
+    "paragraphs": [
+      "En spelares grannar är de två närmaste spelarna som sitter till höger och till vänster om spelaren och fortfarande är kvar i hovet. Så skulle spelaren direkt till höger vara utkastad ur hovet blir grannen spelaren där efter som är kvar i hovet."
+    ]
+  },
+  {
+    "id": "guests",
+    "alignment": "guest",
+    "headline": "Gäster",
+    "paragraphs": [
+      "Gästroller är för spelare som av någon anledning inte kan vara med under hela spelomgången, de antingen måste lämna innan spelet är slut eller kommer efter det har börjat. De kan komma och gå när som helst. De har ofta starka förmågor men får lite information.",
+      "En gäst kan tillhöra vilket som av de båda lagen. Alla vet vilken roll de är, men bara spelaren själv vet vilket lag de tillhör. Om de är en del av inkräktarna så får de endast veta vem troninkräktaren är, inte hantlangarna."
+    ]
+  },
+  {
+    "id": "minions",
+    "alignment": "intruder",
+    "headline": "Hantlangare",
+    "paragraphs": [
+      "Dessa roller tillhör laget inkräktarna. De börjar spelet med att få veta vem deras Troninkräktare är. De har förmågor som antingen hjälper troninkräktaren eller gör det svårare för de lojala."
+    ]
+  },
+  {
+    "id": "court",
+    "alignment": "neutral",
+    "headline": "Hovet",
+    "paragraphs": [
+      "En grupp av spelare. En spelare kan antingen:",
+      "Tillhöra hovet och är då kvar i hovet. Vilket betyder att spelaren kan",
+      "• … utföra sin rolls förmåga",
+      "• … rösta hur många gånger som helst",
+      "• … nominera",
+      "• … prata med alla andra spelarna.",
+      "Inte vara en del av hovet och då inte kvar i hovet. Betyder att denna spelare har blivit förvisad eller utröstad. Vilket leder till att spelaren kan",
+      "• … INTE utföra sin rolls förmåga",
+      "• … rösta bara EN gång under resten av spelet",
+      "• … INTE nominera.",
+      "• … prata med alla andra spelarna."
+    ]
+  },
+  {
+    "id": "intruders",
+    "alignment": "intruder",
+    "headline": "Inkräktare",
+    "paragraphs": [
+      "Laget som försöker ta över makten från den nuvarande kungen. Dessa är färre än de Lojala men vet vilka varandra är.",
+      "Det finns två kategorier av inkräktarroller, Troninkräktaren och Hantlangare.",
+      "👑 Inkräktarna vinner genom att det endast är 2 spelare kvar i hovet varav en är Troninkräktaren."
+    ]
+  },
+  {
+    "id": "book",
+    "alignment": "neutral",
+    "headline": "Kungliga hemligheternas bok",
+    "paragraphs": [
+      "Den bok/webbsida/surfplatta som innehåller berättarens alla hemligheter. Den är hemlig och förbjuden för alla spelare att se, om inte deras roll tillåter det."
+    ]
+  },
+  {
+    "id": "legend",
+    "alignment": "legend",
+    "headline": "Legend",
+    "paragraphs": [
+      "Legender är till för berättaren. Var och en ändrar spelets villkor något och är vanligtvis med från början av spelet. Alla spelare får reda på att en Legend är i spel.",
+      "Syftet med en Legend är att tillåta spelare att delta i spelet när de annars inte skulle kunna, eller att tillåta ett spel att fungera smidigt när det annars skulle vara ett problem i verkligheten. Legender fixar problem som ligger utanför de vanliga spelparametrarna."
+    ]
+  },
+  {
+    "id": "loyal",
+    "alignment": "loyal",
+    "headline": "Lojala",
+    "paragraphs": [
+      "Laget som försöker behålla makten hos den nuvarande kungen. Dessa är fler än Inkräktarna men vet inte vilka alla andra är.",
+      "Det finns två kategorier av lojala roller, Adeln och Tjänarna.",
+      "👑 De Lojala vinner genom att kasta ut Troninkräktaren."
+    ]
+  },
+  {
+    "id": "night",
+    "alignment": "neutral",
+    "headline": "Nattfas",
+    "paragraphs": [
+      "En fas i spelet där spelarna inte får prata med varandra eller förstå vad som pågår. Den är till för att berättaren skall kunna få eller ge ut information till spelarna som ingen förutom just dem skall få veta."
+    ]
+  },
+  {
+    "id": "nomination",
+    "alignment": "neutral",
+    "headline": "Nominering/Nominerad",
+    "paragraphs": [
+      "Nominering sker mellan två spelare, en nominerar en annan. Det betyder att den som nominerar vill kasta ut den nominerade spelaren från hovet.",
+      "När en nominering skett så får den som nominerade först förklara varför och sedan får den anklagade lägga fram sitt försvar. Därefter genomförs en röstning om den nominerade spelaren skall kastas ut eller få vara kvar i hovet."
+    ]
+  },
+  {
+    "id": "register",
+    "alignment": "neutral",
+    "headline": "Registrera",
+    "paragraphs": [
+      "Om någon roll kan registreras som något så betyder det att när andra får information om spelaren med denna roll så kan de se eller få veta om spelaren för vad den verkligen är eller för vad den kan registreras som. ",
+      "T.ex. om en första spelare har en roll som tillhör de lojala men kan registreras som inkräktare, så kan en annan spelare med en roll som får veta vilket lag andra spelare tillhör få informationen att den första spelaren tillhör inkräktarna (även om denne i verkligheten tillhör de lojala)."
+    ]
+  },
+  {
+    "id": "role",
+    "alignment": "neutral",
+    "headline": "Roll/Karaktär",
+    "paragraphs": [
+      "Varje spelare får en unik roll och varje roll har en förmåga. Det kan bara finnas en av varje roll i spel.",
+      "Rollen tillhör en av de två lagen. Är färgen röd eller ljusröd så tillhör spelaren med rollen laget inkräktarna. Medans är färgen blå eller ljusblå så tillhör spelaren de lojala l laget."
+    ]
+  },
+  {
+    "id": "vote",
+    "alignment": "neutral",
+    "headline": "Röst/Röstmarkör",
+    "paragraphs": [
+      "Varje spelare som är kvar i hovet har en röst som de kan använda en gång under varje omröstning om att kasta ut någon ur hovet. Men om spelaren inte är en del av hovet så har de endast en röst under resten av spelet, så de kan bara rösta en gång efter att de kastats ut. Detta visas med en röstmarkör."
+    ]
+  },
+  {
+    "id": "state",
+    "alignment": "neutral",
+    "headline": "Status/Statusmarkör",
+    "paragraphs": [
+      "En spelare kan ha en av två statusar, i hovet eller utanför hovet. Deras status visas med en statusmarkör."
+    ]
+  },
+  {
+    "id": "servant",
+    "alignment": "loyal",
+    "headline": "Tjänare",
+    "paragraphs": [
+      "Dessa roller tillhör de Lojala laget. Men har förmågor som kommer att leda till utmaningar och försvåra de lojalas uppgift i att utvisa troninkräktaren."
+    ]
+  },
+  {
+    "id": "usurper",
+    "alignment": "intruder",
+    "headline": "Troninkräktaren",
+    "paragraphs": [
+      "Denna roll tillhör inkräktarna. Troninkräktaren får reda på vilka dess hantlangare är när spelet börjar. Det kan bara finnas en troninkräktare per spelomgång. ",
+      "Dess förmåga leder oftast till att de kan förvisa en spelare per natt. Är troninkräktaren en av två kvarvarande spelare i hovet så vinner Inkräktarna. "
+    ]
+  },
+  {
+    "id": "votedOut",
+    "alignment": "neutral",
+    "headline": "Utröstad från hovet",
+    "paragraphs": [
+      "Utröstning görs av hovet under dagen genom en lyckad nominering. En utröstad spelare kastas ut och är då inte längre någon del av hovet."
+    ]
+  }
+]

@@ -63,7 +63,7 @@
             }"
             @click="setMarked"
           >
-            Märk för utkastning
+            Märk för utröstning
           </div>
           <div class="button" @click="removeMarked">
             Rensa märkning
