@@ -1,8 +1,8 @@
 [
   {
-    "id": "apothecary",
+    "id": "monk",
     "name": "Apotekare",
-    "edition": "tb",
+    "edition": ["tb", "rtb"],
     "team": "townsfolk",
     "firstNight": 0,
     "firstNightReminder": "",
@@ -13,7 +13,7 @@
     "ability": "Varje natt väljer du en spelare (inte dig själv): den är säker från Troninkräktaren inatt."
   },
   {
-    "id": "steward",
+    "id": "investigator",
     "name": "Förvaltare",
     "edition": "tb",
     "team": "townsfolk",
@@ -26,7 +26,7 @@
     "ability": "Du börjar spelet med informationen att 1 av 2 spelare är en viss Hantlangare."
   },
   {
-    "id": "lordchamberlain",
+    "id": "empath",
     "name": "Hovmarskalk",
     "edition": "tb",
     "team": "townsfolk",
@@ -39,7 +39,7 @@
     "ability": "Varje natt får du reda på hur många av dina 2 grannar, som är kvar i hovet, som tillhör Inkräktarna."
   },
   {
-    "id": "herald",
+    "id": "slayer",
     "name": "Härold",
     "edition": "tb",
     "team": "townsfolk",
@@ -52,7 +52,7 @@
     "ability": "En gång per spel, under dagen, välj en spelare offentligt: om de är Troninkräktaren kastas de ut från hovet."
   },
   {
-    "id": "clerkofthewardrobe",
+    "id": "washerwoman",
     "name": "Kammarmästare",
     "edition": "tb",
     "team": "townsfolk",
@@ -65,7 +65,7 @@
     "ability": "Du börjar spelet med informationen att 1 av 2 spelare är en roll i Adeln."
   },
   {
-    "id": "chancellor",
+    "id": "fortuneteller",
     "name": "Kansler",
     "edition": "tb",
     "team": "townsfolk",
@@ -78,7 +78,7 @@
     "ability": "Varje natt väljer du 2 spelare: du får reda på om en av de är Troninkräktaren. Det finns en av Adeln som registreras som Troninkräktaren för dig."
   },
   {
-    "id": "constable",
+    "id": "undertaker",
     "name": "Konstapel",
     "edition": "tb",
     "team": "townsfolk",
@@ -91,7 +91,7 @@
     "ability": "Varje natt får du veta vilken karaktär som kastades ut ur hovet idag."
   },
   {
-    "id": "marshal",
+    "id": "ravenkeeper",
     "name": "Marskalk",
     "edition": "tb",
     "team": "townsfolk",
@@ -104,7 +104,7 @@
     "ability": "Om du förvisades under natten, blir du väckt för att välja en spelare: du får veta dess karaktär."
   },
   {
-    "id": "cupbearer",
+    "id": "virgin",
     "name": "Munskänk",
     "edition": "tb",
     "team": "townsfolk",
@@ -117,7 +117,7 @@
     "ability": "Första gången du blir nominerad, om den som nominerade dig är Adlig kastas de direkt ut ur hovet."
   },
   {
-    "id": "prince",
+    "id": "mayor",
     "name": "Prins",
     "edition": "tb",
     "team": "townsfolk",
@@ -130,7 +130,7 @@
     "ability": "Om bara tre spelare är kvar i hovet och ingen blir utröstad, så vinner ditt lag. Om du blir förvisad under natten så kan en annan spelare bli förvisad istället."
   },
   {
-    "id": "seneschal",
+    "id": "librarian",
     "name": "Seneskalk",
     "edition": "tb",
     "team": "townsfolk",
@@ -143,7 +143,7 @@
     "ability": "Du börjar spelet med information att 1 av 2 spelare är en viss Tjänare. (Eller att ingen är i spel)."
   },
   {
-    "id": "treasurer",
+    "id": "solider",
     "name": "Skattmästare",
     "edition": "tb",
     "team": "townsfolk",
@@ -156,7 +156,7 @@
     "ability": "Du är skyddad från Troninkräktaren."
   },
   {
-    "id": "scribe",
+    "id": "chef",
     "name": "Skrivare",
     "edition": "tb",
     "team": "townsfolk",
@@ -169,7 +169,7 @@
     "ability": "Vid spelets start får du reda på hur många par av inkräktare spelet har."
   },
   {
-    "id": "child",
+    "id": "saint",
     "name": "Barn",
     "edition": "tb",
     "team": "outsider",
@@ -182,7 +182,7 @@
     "ability": "Om du blir utröstad under dagen förlorar ditt lag."
   },
   {
-    "id": "villageidiot",
+    "id": "drunk",
     "name": "Byfåne",
     "edition": "tb",
     "team": "outsider",
@@ -235,7 +235,7 @@
     "ability": "Varje natt väljer du en spelare: de är förgiftad inatt och under morgondagen."
   },
   {
-    "id": "lordsrepresentative",
+    "id": "scarletwoman",
     "name": "Hertigens rep.",
     "edition": "tb",
     "team": "minion",
@@ -248,7 +248,7 @@
     "ability": "Om det finns 5 eller fler spelare i hovet och Troninkräktaren tas bort från hovet blir du Troninkräktaren. (Gäster räknas inte)"
   },
   {
-    "id": "knight",
+    "id": "baron",
     "name": "Riddare",
     "edition": "tb",
     "team": "minion",
@@ -274,7 +274,7 @@
     "ability": "Varje natt ser du de Kungliga Hemligheternas Bok. Du kan registrera som en Lojal & som Adel eller Tjänare, även om du inte är i hovet längre."
   },
   {
-    "id": "duke",
+    "id": "imp",
     "name": "Hertig",
     "edition": "tb",
     "team": "demon",
@@ -300,7 +300,7 @@
     "ability": "Varje natt väljer du en spelare (inte dig själv): deras röst räknas som 3 röster under morgondagen."
   },
   {
-    "id": "vigilante",
+    "id": "gunslinger",
     "name": "Medborgargarde",
     "edition": "tb",
     "team": "traveler",
@@ -350,5 +350,18 @@
     "reminders": ["Negative röst"],
     "setup": false,
     "ability": "Varje natt väljer du en spelare (inte dig själv): deras röst räknas negativt imorgon."
+  },
+  {
+    "id": "riot",
+    "name": "Revolution",
+    "edition": "rtb",
+    "team": "demon",
+    "firstNight": 0,
+    "firstNightReminder": "",
+    "otherNight": 0,
+    "otherNightReminder": "",
+    "reminders": [],
+    "setup": true,
+    "ability": "Nominerade kastas ut, men får omedelbart nominera igen (dag 3 måste de). Efter dag 3 vinner Inkräktarna. [Alla hantlangare är en del av Revolutionen]"
   }
 ]

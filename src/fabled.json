@@ -1,6 +1,6 @@
 [
   {
-    "id": "plaguedoctor",
+    "id": "doomsayer",
     "firstNightReminder": "",
     "otherNightReminder": "",
     "reminders": [],
@@ -10,7 +10,7 @@
     "ability": "Om 4 eller fler spelare är kvar i hovet kan var och en av dessa (en gång per spel) offentligt välja att en spelare av deras lag skall kastas ut."
   },
   {
-    "id": "armor",
+    "id": "angel",
     "firstNightReminder": "",
     "otherNightReminder": "",
     "reminders": ["Skydda", "Något Dåligt"],
@@ -20,7 +20,7 @@
     "ability": "Något dåligt kan hända vemhelst som är mest ansvarig för att en ny spelare får lämna hovet."
   },
   {
-    "id": "mute",
+    "id": "buddhist",
     "firstNightReminder": "",
     "otherNightReminder": "",
     "reminders": [],
@@ -30,7 +30,7 @@
     "ability": "Under varje dags första 2 minuter får erfarna spelare inte prata."
   },
   {
-    "id": "headlibrarian",
+    "id": "hellslibrarian",
     "firstNightReminder": "",
     "otherNightReminder": "",
     "reminders": ["Något Dåligt"],
@@ -50,7 +50,7 @@
     "ability": "2 grannar är kända för att vara i samma lag. En gång per spel kan 1 av den registrera fel."
   },
   {
-    "id": "duel",
+    "id": "fiddler",
     "firstNightReminder": "",
     "otherNightReminder": "",
     "reminders": [],

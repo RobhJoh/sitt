@@ -25,10 +25,6 @@ export default {
     }
   },
   computed: {
-    /**
-     * Return a list of jinxes in the form of role IDs and a reason
-     * @returns {*[]} [{first, second, reason}]
-     */
     ...mapState(['modals']),
   },
   methods: {

@@ -7,5 +7,32 @@
     "level": "Beginner",
     "roles": [],
     "isOfficial": true
+  },
+  {
+    "id": "rtb",
+    "name": "Revolution in Trouble Brewing",
+    "author": "Roberth Johansson",
+    "description": "",
+    "level": "Beginner",
+    "roles": [
+      "riot",
+      "chef",
+      "empath",
+      "fortune_teller",
+      "investigator",
+      "librarian",
+      "mayor",
+      "monk",
+      "ravenkeeper",
+      "slayer",
+      "soldier",
+      "undertaker",
+      "virgin",
+      "washerwoman",
+      "butler",
+      "drunk",
+      "recluse"
+    ],
+    "isOfficial": false
   }
 ]

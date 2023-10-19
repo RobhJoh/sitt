@@ -251,11 +251,11 @@
       },
       {
         "id": "Saint",
-        "reason": "If a good player nominates and kills the Saint, the Saint's team loses."
+        "reason": "Om en lojal spelare nominerar och kastar ut barnet, förlorar barnets lag."
       },
       {
         "id": "Butler",
-        "reason": "The Butler can not nominate their master."
+        "reason": "Förste betjänten kan inte nominera sin mästare (spelaren de valt)."
       },
       {
         "id": "Pit-Hag",
@@ -263,11 +263,11 @@
       },
       {
         "id": "Mayor",
-        "reason": "If the 3rd day begins with just three players alive, the players may choose (as a group) not to nominate at all. If so (and a Mayor is alive) then the Mayor's team wins."
+        "reason": "Om den 3:e dagen börjar med bara tre spelare i hovet, kan spelarna välja (som grupp) att inte nominera alls. Om så är fallet (och en prins är kvar i hovet) vinner prinsens lag."
       },
       {
         "id": "Monk",
-        "reason": "If a Riot player nominates and kills the Monk-protected-player, the Monk-protected-player does not die."
+        "reason": "Om en Revolution-spelare nominerar och kastar ut den apotekarskyddade spelaren, kastas inte den skyddade spelaren ut."
       },
       {
         "id": "Farmer",
@@ -283,11 +283,11 @@
       },
       {
         "id": "Ravenkeeper",
-        "reason": "If a Riot player nominates and kills the Ravenkeeper, the Ravenkeeper uses their ability tonight."
+        "reason": "Om en Revolution-spelare nominerar och kastar ut Marskalken, använder Marskalken sin förmåga i kväll."
       },
       {
         "id": "Soldier",
-        "reason": "If a Riot player nominates the Soldier, the Soldier does not die."
+        "reason": "Om en Revolution-spelare nominerar skattmästaren kastas inte skattmästaren ut."
       },
       {
         "id": "Grandmother",
@@ -311,7 +311,7 @@
       },
       {
         "id": "Undertaker",
-        "reason": "Players that die by nomination register as being executed to the Undertaker."
+        "reason": "Spelare som kastas ut genom nominering registreras som utkastade för konstapeln."
       },
       {
         "id": "Cannibal",
@@ -327,7 +327,7 @@
       },
       {
         "id": "Investigator",
-        "reason": "Riot registers as a Minion to the Investigator."
+        "reason": "Revolution registreras som en Hantlangare för konstapeln."
       },
       {
         "id": "Clockmaker",
