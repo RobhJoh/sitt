@@ -2,7 +2,7 @@
   {
     "id": "monk",
     "name": "Apotekare",
-    "edition": ["tb", "rtb"],
+    "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
     "firstNightReminder": "",
