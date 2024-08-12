@@ -218,6 +218,14 @@
     ]
   },
   {
+    "id": "thrownOut",
+    "alignment": "neutral",
+    "headline": "Utkastad från hovet",
+    "paragraphs": [
+      "En spelare kan bli utkastad från hovet genom förvisning, utröstning eller andra förmågor. Utkastning leder till att spelaren inte längre är en del av hovet."
+    ]
+  },
+  {
     "id": "votedOut",
     "alignment": "neutral",
     "headline": "Utröstad från hovet",

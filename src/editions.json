@@ -34,5 +34,120 @@
       "recluse"
     ],
     "isOfficial": false
+  },
+  {
+    "id": "bmd",
+    "name": "Bakom Maktens Dörrar",
+    "author": "The Pandemonium Institute",
+    "description": "",
+    "level": "Intermediate",
+    "roles": [],
+    "isOfficial": true
+  },
+  {
+    "id": "sov",
+    "name": "Sekretess och Violer",
+    "author": "The Pandemonium Institute",
+    "description": "",
+    "level": "Intermediate",
+    "roles": [],
+    "isOfficial": true
+  },
+  {
+    "id": "ngj",
+    "name": "No Greater Joy",
+    "author": "Steven Medway",
+    "description": "",
+    "level": "Beginner",
+    "roles": [
+      "investigator",
+      "chambermaid",
+      "clockmaker",
+      "artist",
+      "empath",
+      "sage",
+      "klutz",
+      "drunk",
+      "scarletwoman",
+      "baron-teensyville",
+      "imp"
+    ],
+    "isOfficial": true
+  },
+  {
+    "id": "oti",
+    "name": "On Thin Ice",
+    "author": "Ted Helm",
+    "description": "",
+    "level": "Intermediate",
+    "roles": [
+      "artist",
+      "seamstress",
+      "slayer",
+      "philosopher",
+      "professor",
+      "virgin",
+      "klutz",
+      "moonchild",
+      "mastermind",
+      "eviltwin",
+      "pukka"
+    ],
+    "isOfficial": true
+  },
+  {
+    "id": "fm",
+    "name": "Frankenstein's Mayor",
+    "author": "Ted Helm",
+    "description": "",
+    "level": "Intermediate",
+    "roles": [
+      "chef",
+      "sage",
+      "oracle",
+      "ravenkeeper",
+      "undertaker",
+      "mayor",
+      "recluse",
+      "lunatic",
+      "poisoner",
+      "spy",
+      "zombuul"
+    ],
+    "isOfficial": true
+  },
+  {
+    "id": "lmt",
+    "name": "Lite mera Trubbel",
+    "author": "Roberth Johansson",
+    "description": "",
+    "level": "Beginner",
+    "roles": [
+      "monk",
+      "gambler",
+      "grandmother",
+      "empath",
+      "washerwoman",
+      "fortuneteller",
+      "undertaker",
+      "ravenkeeper",
+      "chambermaid",
+      "librarian",
+      "solider",
+      "chef",
+      "gossip",
+      "saint",
+      "drunk",
+      "recluse",
+      "moonchild",
+      "poisoner",
+      "scarletwoman",
+      "godfather",
+      "assassin",
+      "imp",
+      "lilmonsta",
+      "kazali"
+    ],
+    "isOfficial": false
   }
 ]
