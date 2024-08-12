@@ -130,3 +130,11 @@ This project will always be available free of charge, since I love building cool
 
 export NODE_OPTIONS=--openssl-legacy-provider
 npm run serve
+
+# Deployment
+
+Run
+npm run build
+
+Github
+Ladda upp filer till gh-pages
