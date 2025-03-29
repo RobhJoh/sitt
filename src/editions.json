@@ -8,7 +8,7 @@
     "roles": [],
     "isOfficial": true
   },
-    {
+  {
     "id": "lmt",
     "name": "Lite mera Trubbel",
     "author": "Roberth Johansson",
@@ -63,69 +63,6 @@
     "isOfficial": true
   },
   {
-    "id": "ngj",
-    "name": "No Greater Joy",
-    "author": "Steven Medway",
-    "description": "",
-    "level": "Beginner",
-    "roles": [
-      "investigator",
-      "chambermaid",
-      "clockmaker",
-      "artist",
-      "empath",
-      "sage",
-      "klutz",
-      "drunk",
-      "scarletwoman",
-      "baron-teensyville",
-      "imp"
-    ],
-    "isOfficial": true
-  },
-  {
-    "id": "oti",
-    "name": "On Thin Ice",
-    "author": "Ted Helm",
-    "description": "",
-    "level": "Intermediate",
-    "roles": [
-      "artist",
-      "seamstress",
-      "slayer",
-      "philosopher",
-      "professor",
-      "virgin",
-      "klutz",
-      "moonchild",
-      "mastermind",
-      "eviltwin",
-      "pukka"
-    ],
-    "isOfficial": true
-  },
-  {
-    "id": "fm",
-    "name": "Frankenstein's Mayor",
-    "author": "Ted Helm",
-    "description": "",
-    "level": "Intermediate",
-    "roles": [
-      "chef",
-      "sage",
-      "oracle",
-      "ravenkeeper",
-      "undertaker",
-      "mayor",
-      "recluse",
-      "lunatic",
-      "poisoner",
-      "spy",
-      "zombuul"
-    ],
-    "isOfficial": true
-  },
-  {
     "id": "lmt",
     "name": "Lite mera Trubbel",
     "author": "Roberth Johansson",
@@ -156,6 +93,41 @@
       "imp",
       "lilmonsta",
       "kazali"
+    ],
+    "isOfficial": false
+  },
+  {
+    "id": "pv",
+    "name": "Paranoian Växer",
+    "author": "Lars Hallgren & Roberth Johansson",
+    "description": "",
+    "level": "Beginner",
+    "roles": [
+      "chef",
+      "empath",
+      "fortuneteller",
+      "investigator",
+      "librarian",
+      "mayor",
+      "monk",
+      "ravenkeeper",
+      "slayer",
+      "soldier",
+      "undertaker",
+      "virgin",
+      "washerwoman",
+      "butler",
+      "drunk",
+      "recluse",
+      "saint",
+      "baron",
+      "marionette",
+      "poisoner",
+      "scarletwoman",
+      "imp",
+      "lleech",
+      "nodashii",
+      "ojo"
     ],
     "isOfficial": false
   }

@@ -922,5 +922,44 @@
     "reminders": ["Förvisad"],
     "setup": false,
     "ability": "Varje natt*, välj en spelare: de kastas ut. [Du väljer vilka spelare som är vilka hantlangare. -? till +? Tjänare]"
+  },
+  {
+    "id": "marionette",
+    "name": "Marionett",
+    "edition": "exp",
+    "team": "minion",
+    "firstNight": 0,
+    "firstNightReminder": "",
+    "otherNight": 0,
+    "otherNightReminder": "",
+    "reminders": ["Marionett"],
+    "setup": true,
+    "ability": "Du tror att du är en lojal roll, men det är du inte. Troninkräktaren vet vem du är. [Du sitter granne med Troninkräktaren]"
+  },
+  {
+    "id": "lleech",
+    "name": "Friherre",
+    "edition": "exp",
+    "team": "demon",
+    "firstNight": 1,
+    "firstNightReminder": "Friherren pekar på en spelare, denna spelaren blir Friherrens värd och de är förgiftad.",
+    "otherNight": 25,
+    "otherNightReminder": "Friherren pekar på en spelare. Den spelaren förvisas.",
+    "reminders": ["Friherrens värd - Förgiftad", "Förvisad"],
+    "setup": false,
+    "ability": "Varje natt*, välj en spelare: de kastas ut. Du börjar med att välja en spelare i hovet: de är förgiftad - du kastas ENDAST ut om och när de kastas ut."
+  },
+  {
+    "id": "ojo",
+    "name": "Storvesir",
+    "edition": "exp",
+    "team": "demon",
+    "firstNight": 0,
+    "firstNightReminder": "",
+    "otherNight": 25,
+    "otherNightReminder": "Storvisiren pekar på en roll på karaktärsbladet. Spelaren med den rollen förvisas. Om rollen inte är i spel väljer Spelledaren vem som förvisas.",
+    "reminders": ["Förvisad"],
+    "setup": false,
+    "ability": "Varje natt*, välj en roll: de förvisas. Om rollen inte är i spel väljer Spelledaren vem som förvisas."
   }
 ]
