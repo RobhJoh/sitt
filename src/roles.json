@@ -143,7 +143,7 @@
     "ability": "Du börjar spelet med information att 1 av 2 spelare är en viss Tjänare. (Eller att ingen är i spel)."
   },
   {
-    "id": "solider",
+    "id": "soldier",
     "name": "Skattmästare",
     "edition": "tb",
     "team": "townsfolk",
