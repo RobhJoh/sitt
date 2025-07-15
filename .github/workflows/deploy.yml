@@ -17,9 +17,8 @@ jobs:
           node-version: '16'
 
       - name: Install and Build 🔧
-        env:
-          NODE_OPTIONS: --openssl-legacy-provider
         run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
           npm ci
           npm run build
 
