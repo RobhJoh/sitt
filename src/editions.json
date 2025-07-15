@@ -9,15 +9,6 @@
     "isOfficial": true
   },
   {
-    "id": "lmt",
-    "name": "Lite mera Trubbel",
-    "author": "Roberth Johansson",
-    "description": "",
-    "level": "Beginner",
-    "roles": ["chef", "empath"],
-    "isOfficial": false
-  },
-  {
     "id": "rtb",
     "name": "Revolution in Trouble Brewing",
     "author": "Roberth Johansson",

@@ -128,8 +128,7 @@ This project will always be available free of charge, since I love building cool
 
 # Development
 
-export NODE_OPTIONS=--openssl-legacy-provider
-npm run serve
+npm run dev
 
 # Deployment
 
