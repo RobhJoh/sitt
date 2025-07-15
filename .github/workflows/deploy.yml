@@ -14,11 +14,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '14'
 
       - name: Install and Build 🔧
         run: |
-          export NODE_OPTIONS=--openssl-legacy-provider
           npm ci
           npm run build
 
