@@ -132,8 +132,21 @@ npm run dev
 
 # Deployment
 
-Run
-npm run build
+## Automated Deployment
 
-Github
-Ladda upp filer till gh-pages
+This project uses GitHub Actions for automated CI/CD. When you push to the `main` branch:
+
+1. **Linting**: Code is automatically linted to ensure quality
+2. **Build**: Project is built using `npm run build`
+3. **Deploy**: Built files are automatically deployed to GitHub Pages
+
+The site will be available at: `https://robhjoh.github.io/sitt/`
+
+## Manual Deployment
+
+If you need to deploy manually:
+
+```bash
+npm run build
+# Upload dist/ folder to gh-pages branch
+```
