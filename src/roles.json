@@ -1115,5 +1115,42 @@
     ],
     "setup": true,
     "ability": "Under natt X så är alla i Adeln förgiftade till kvällen. [X antal tjänare i spel]"
+  },
+  {
+    "id": "cannibal",
+    "name": "Sekreterare",
+    "edition": "exp",
+    "team": "townsfolk",
+    "firstNight": 0,
+    "firstNightReminder": "",
+    "otherNight": 1,
+    "otherNightReminder": "Baserat på om och vad för roll sekreteraren har så skall denne vakna upp när dess roll skulle. Om det är en roll som ger info under första natten skall sekreteraren vakna upp och få informationen först efter alla roller som kan kasta ut under natten.",
+    "reminders": ["Sekreteraren 1", "Sekreteraren 2", "Sekreteraren 3"],
+    "setup": false,
+    "ability": "Du har förmågan som den senast utröstade spelaren hade. Om de var inkräktare blir du förgiftad tills en lojal spelare röstas ut."
+  },
+  {
+    "id": "legion",
+    "name": "Pöbeln",
+    "edition": "exp",
+    "team": "demon",
+    "firstNight": 0,
+    "firstNightReminder": "",
+    "otherNight": 35,
+    "otherNightReminder": "Kasta kanske ut en spelare.",
+    "reminders": [
+      "Natt 1",
+      "Natt 2",
+      "Natt 3",
+      "Natt 4",
+      "Förgiftad",
+      "Förgiftad",
+      "Förgiftad",
+      "Förgiftad",
+      "Förgiftad",
+      "Förgiftad"
+    ],
+    "setup": true,
+    "ability": "Varje natt* kanske en spelare kastas ut. Utröstningar misslyckas om bara inkräktare röstar. Du registreras också som en hantlangare. [De flesta spelarna är Legion]"
   }
 ]
