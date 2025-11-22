@@ -297,7 +297,7 @@
     "otherNightReminder": "Hertigen pekar på en spelare. Den spelaren förvisas. Om Hertigen valde sig själva: Byt ut karaktären av 1 hantlangare fortfarande i hovet med en extra Hertigmarkör. Visa den nya Hertigen 'Du är'-kortet och sedan Hertigmarkören.",
     "reminders": ["Förvisad"],
     "setup": false,
-    "ability": "Varje natt väljer du en spelare: de förvisas från hovet. Om du förvisar dig själv så blir en Hantlangare den nye Troninkräktaren."
+    "ability": "Varje natt* väljer du en spelare: de förvisas från hovet. Om du förvisar dig själv så blir en Hantlangare den nye Troninkräktaren."
   },
   {
     "id": "bureaucrat",
