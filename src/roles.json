@@ -1125,7 +1125,7 @@
     "firstNightReminder": "",
     "otherNight": 1,
     "otherNightReminder": "Baserat på om och vad för roll sekreteraren har så skall denne vakna upp när dess roll skulle. Om det är en roll som ger info under första natten skall sekreteraren vakna upp och få informationen först efter alla roller som kan kasta ut under natten.",
-    "reminders": ["Sekreteraren 1", "Sekreteraren 2", "Sekreteraren 3"],
+    "reminders": ["Kopia av", "Sekreteraren 1", "Sekreteraren 2", "Sekreteraren 3"],
     "setup": false,
     "ability": "Du har förmågan som den senast utröstade spelaren hade. Om de var inkräktare blir du förgiftad tills en lojal spelare röstas ut."
   },
