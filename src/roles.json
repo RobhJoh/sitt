@@ -10,7 +10,7 @@
     "otherNightReminder": "Den tidigare skyddade spelaren är inte längre skyddad. Apotekaren pekar på en spelare (inte sig själv). Markera den spelaren som 'Skyddad'.",
     "reminders": ["Skyddad"],
     "setup": false,
-    "ability": "Varje natt väljer du en spelare (inte dig själv): den är säker från Troninkräktaren inatt."
+    "ability": "Varje natt* väljer du en spelare (inte dig själv): den är säker från Troninkräktaren inatt."
   },
   {
     "id": "investigator",
