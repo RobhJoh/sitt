@@ -1152,5 +1152,18 @@
     ],
     "setup": true,
     "ability": "Varje natt* kanske en spelare kastas ut. Utröstningar misslyckas om bara inkräktare röstar. Du registreras också som en hantlangare. [De flesta spelarna är Legion]"
+  },
+  {
+    "id": "alhadikia",
+    "name": "Kahn",
+    "edition": "exp",
+    "team": "demon",
+    "firstNight": 0,
+    "firstNightReminder": "",
+    "otherNight": 48,
+    "otherNightReminder": "Väck Kahn och be dem välja 3 spelare i ordning. Samla alla spelare och ta in dem en åt gången, i ordningen Kahn har valt. De får välja hovet eller utkastning. Om alla 3 spelare väljer  hovet blir alla 3 utkastade.",
+    "reminders": ["Val 1", "Val 2", "Val 3"],
+    "setup": true,
+    "ability": "Varje natt*, välj 3 spelare (alla spelare får veta vilka): Var och en väljer tyst hovet eller att bli utkastad, men om alla väljer hovet så blir alla utkastade."
   }
 ]
